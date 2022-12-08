@@ -13,8 +13,15 @@ public:
 	void DrawWindowContents();
 
 private:
+	void GetSoftwareVersions();
+	void GetCPUinfo();
+	void GetCaps();
+	void GetGPUinfo();
+
+	std::string m_glewVersion;
 	std::string m_sdlVersion;
 	std::string m_cpusAndCache;
+	std::string m_caps;
 	std::string m_ram;
 	std::string m_gpuVendorAndDevice;
 	std::string m_gpuBrand;
