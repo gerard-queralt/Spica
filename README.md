@@ -32,6 +32,16 @@ Spica allows you to load an `.fbx` model from anywhere in your system. Simply dr
 
 Additionally, Spica can give you information about the loaded model and its meshes, like the number of triangles in each mesh.
 
+### Scene as window
+
+Even though it was outside of the scope for this deliverable, the scene where the geometry is loaded is also a dockable window. This allows you to easlily resize it, move it around and even disable it.
+
+To do so, the scene is rendered into a texture, which is in turn rendered into an ImGui window. If you'd like to see the code behind it:
+
+- [ModuleRenderer, where the texture and the necessary buffers are created, updated and rendered into](https://github.com/gerard-queralt/Spica/blob/main/Spica/Source/Modules/ModuleRender.cpp).
+
+- [WindowScene, where the texture is passed to ImGui](https://github.com/gerard-queralt/Spica/blob/main/Spica/Source/Models/Windows/EditorWindows/WindowScene.cpp).
+
 ### Integrated console
 
 Spica has an integrated console that logs what it's doing in the background, like the initialization of libraries or the steps when loading a model.
