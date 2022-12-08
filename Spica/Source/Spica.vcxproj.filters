@@ -664,9 +664,6 @@
     <None Include="..\External\MathGeoLib\Include\Math\Matrix.inl">
       <Filter>External\MathGeoLib\Math</Filter>
     </None>
-    <None Include="Resources\ApplicationIcon\Spica.aps">
-      <Filter>Resources\Application Icon</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources\ApplicationIcon\Spica.rc">

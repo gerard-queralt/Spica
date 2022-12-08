@@ -351,7 +351,6 @@
     <None Include="..\External\MathGeoLib\Include\Geometry\TriangleMesh_IntersectRay_SSE.inl" />
     <None Include="..\External\MathGeoLib\Include\Math\float2.inl" />
     <None Include="..\External\MathGeoLib\Include\Math\Matrix.inl" />
-    <None Include="Resources\ApplicationIcon\Spica.aps" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources\ApplicationIcon\Spica.rc" />
