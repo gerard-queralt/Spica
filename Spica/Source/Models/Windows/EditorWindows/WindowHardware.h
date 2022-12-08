@@ -17,6 +17,7 @@ private:
 	void GetCPUinfo();
 	void GetCaps();
 	void GetGPUinfo();
+	void UpdateAvailableMemory();
 
 	std::string FormatVersion(unsigned int i_major, unsigned int i_minor, unsigned int i_patch);
 
@@ -35,5 +36,9 @@ private:
 	std::string m_ram;
 	std::string m_gpuVendorAndDevice;
 	std::string m_gpuBrand;
+
+	std::string m_availableRam;
+	std::string m_totalRam;
+	std::string m_usedRam;
 };
 

@@ -45,6 +45,11 @@ void WindowHardware::DrawWindowContents()
 
 	ImGui::TextUnformatted(("GPU: " + m_gpuVendorAndDevice).c_str());
 	ImGui::TextUnformatted(("Brand: " + m_gpuBrand).c_str());
+
+	UpdateAvailableMemory();
+	ImGui::TextUnformatted(("VRAM Available: " + m_availableRam + "Mb").c_str());
+	ImGui::TextUnformatted(("VRAM Total: " + m_totalRam + "Mb").c_str());
+	ImGui::TextUnformatted(("VRAM Used: " + m_usedRam + "Mb").c_str());
 }
 
 void WindowHardware::GetSoftwareVersions()
@@ -133,6 +138,26 @@ void WindowHardware::GetGPUinfo()
 	std::string gpuDevice = std::to_string(adapterIdentifier.DeviceId);
 	m_gpuVendorAndDevice = "vendor " + gpuVendor + " device " + gpuDevice;
 	m_gpuBrand = adapterIdentifier.Description;
+}
+
+void WindowHardware::UpdateAvailableMemory()
+{
+	int availableRamKb = 0;
+	int totalRamKb = 0;
+	glGetIntegerv(GL_GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX, &availableRamKb);
+	glGetIntegerv(GL_GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX, &totalRamKb);
+
+	float availableRamMb = availableRamKb / 1000.f;
+	float totalRamMb = totalRamKb / 1000.f;
+	float usedRamMb = totalRamMb - availableRamMb;
+
+	char buf[128];
+	sprintf_s(buf, 128, "%.2f", availableRamMb);
+	m_availableRam = std::string(buf);
+	sprintf_s(buf, 128, "%.2f", totalRamMb);
+	m_totalRam = std::string(buf);
+	sprintf_s(buf, 128, "%.2f", usedRamMb);
+	m_usedRam = std::string(buf);
 }
 
 std::string WindowHardware::FormatVersion(unsigned int i_major, unsigned int i_minor, unsigned int i_patch)
