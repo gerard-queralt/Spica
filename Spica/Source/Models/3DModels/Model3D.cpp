@@ -9,7 +9,7 @@
 #include "assimp/cimport.h"
 #include "assimp/postprocess.h"
 
-const std::string Model3D::s_modelFolderPath = "models/";
+const std::string Model3D::s_modelFolderPath = "assets/models/";
 
 Model3D::Model3D(std::string i_fileName)
 {

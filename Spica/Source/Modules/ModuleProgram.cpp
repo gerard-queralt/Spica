@@ -4,7 +4,7 @@
 #include "Application.h"
 #include "ModuleEditor.h"
 
-const std::string ModuleProgram::s_shaderFolderPath = "shaders/";
+const std::string ModuleProgram::s_shaderFolderPath = "assets/shaders/";
 
 ModuleProgram::ModuleProgram()
 {

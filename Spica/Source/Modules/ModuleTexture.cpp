@@ -3,7 +3,7 @@
 #include "Application.h"
 #include "ModuleEditor.h"
 
-const std::string ModuleTexture::s_textureFolderPath = "textures/";
+const std::string ModuleTexture::s_textureFolderPath = "assets/textures/";
 
 ModuleTexture::ModuleTexture()
 {
