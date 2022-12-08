@@ -3,7 +3,7 @@
 #include "imgui.h"
 #include "SDL.h"
 
-const std::string WindowMainMenu::s_repositoryLink = "https://github.com/gerard-queralt/VideogameMasterExercises/tree/main/Engine";
+const std::string WindowMainMenu::s_repositoryLink = "https://github.com/gerard-queralt/Spica";
 bool WindowMainMenu::s_default = true;
 
 WindowMainMenu::WindowMainMenu(std::list<EditorWindow*>& i_editorWindows) : Window("Main Menu")
