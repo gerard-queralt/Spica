@@ -14,19 +14,45 @@ After finishing my Informatics Engineering degree, specializing in Software Engi
 
 ## Usage
 
-TBA
+Spica has very intuitive controls to navigate the scene.
+
+- While holding **Right click**, you can move freely with WASD and move the camera around with the mouse. Holding **LShift** makes you move twice as fast.
+
+- You can zoom with the **mouse wheel**.
+
+- While holding **Alt + Left click** you can orbit around the loaded geometry.
+
+- You can focus the camera on the loaded geometry by pressing **F**.
 
 ## Functionality
 
-TBA
+### Loading FBX models
+
+Spica allows you to load an `.fbx` model from anywhere in your system. Simply drag and drop the file onto the engine, and it will take care of everything for you!
+
+Additionally, Spica can give you information about the loaded model and its meshes, like the number of triangles in each mesh.
+
+### Integrated console
+
+Spica has an integrated console that logs what it's doing in the background, like the initialization of libraries or the steps when loading a model.
+
+### Hardware detection
+
+The engine can show you information about your system or the graphics card in which it's running.
+
+### Configuration
+
+Almost all parameters of the program can be changed through its graphical interface, be it the window's size, the maximum FPS, or the shaders used in rendering.
 
 ## Known issues
 
-TBA
+- In some devices, loading multiple FBXs will cause the engine to stop rendering completely. However, in some others it keeps working just fine, so the cause hasn't been identified yet.
+
+- When resizing the window, the camera's position does not change, so even though the aspect ratio is correct it can look weird (for example, when setting the window to fullscreen). A workaround has not been found as of yet.
 
 ## Additional comments
 
-TBA
+Even though the functionality of the engine is, quite frankly, limited, as stated before, I'm very proud of my architectural work. I tried to organize and separate the different functions to make the code follow the SOLID design principles. This also made it so there is little repeated code, so changes can be made quickly and propagate in a transparent manner. Also, the different class hierarchies used - most notably [Window](https://github.com/gerard-queralt/Spica/tree/main/Spica/Source/Models/Windows) - allow for easy extension of the software with minimal work required.
 
 ## Link
 
