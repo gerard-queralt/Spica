@@ -15,6 +15,12 @@ WindowWindow::~WindowWindow()
 
 void WindowWindow::DrawWindowContents()
 {
+	float brightness = App->window->GetWindowBrightness();
+	ImGui::TextUnformatted("Window Brightness");
+	bool brightnessChanged = ImGui::SliderFloat("##bright", &brightness, .25f, 1.f, "%.3f", ImGuiSliderFlags_AlwaysClamp);
+	if (brightnessChanged)
+		App->window->SetWindowBrightness(brightness);
+
 	int width, height;
 	SDL_GetWindowSize(App->window->m_window, &width, &height);
 	ImGui::TextUnformatted("Window Width");

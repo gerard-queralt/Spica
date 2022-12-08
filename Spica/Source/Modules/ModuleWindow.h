@@ -27,12 +27,14 @@ public:
 	bool IsWindowResizable();
 	bool IsWindowBorderless();
 	bool IsWindowDesktopFullscreen();
+	float GetWindowBrightness();
 
 	void SetWindowToDefault();
 	void SetFullscreen(bool i_fullscreen);
 	void SetResizable(bool i_resizable);
 	void SetBorderless(bool i_borderless);
 	void SetDesktopFullscreen(bool i_fullDesktop);
+	void SetWindowBrightness(float i_brightness);
 
 public:
 	//The window we'll be rendering to

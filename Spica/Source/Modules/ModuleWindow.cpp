@@ -96,6 +96,11 @@ bool ModuleWindow::IsWindowDesktopFullscreen()
 	return IsFlagSet(SDL_WINDOW_FULLSCREEN_DESKTOP) && !m_fullscreen;
 }
 
+float ModuleWindow::GetWindowBrightness()
+{
+	return SDL_GetWindowBrightness(m_window);
+}
+
 void ModuleWindow::SetWindowToDefault()
 {
 	SDL_SetWindowFullscreen(m_window, 0);
@@ -136,6 +141,11 @@ void ModuleWindow::SetDesktopFullscreen(bool i_fullDesktop)
 		m_screenSurface = SDL_GetWindowSurface(m_window);
 		m_fullscreen = false;
 	}
+}
+
+void ModuleWindow::SetWindowBrightness(float i_brightness)
+{
+	SDL_SetWindowBrightness(m_window, i_brightness);
 }
 
 SDL_bool ModuleWindow::BoolToSDL_Bool(bool i_bool)
