@@ -23,6 +23,8 @@ void WindowRenderer::DrawWindowContents()
 	ImGui::InputText("##vertex shader", &m_vertexShaderBuffer[0], s_bufferSize);
 	ImGui::TextUnformatted("Fragment shader");
 	ImGui::InputText("##fragment shader", &m_fragmentShaderBuffer[0], s_bufferSize);
+
+	ImGui::Dummy(ImVec2(0.f, 5.f)); //spacing
 	if (ImGui::Button("Update shaders")) {
 		App->renderer->SetShaders(m_vertexShaderBuffer.c_str(), m_fragmentShaderBuffer.c_str());
 	}

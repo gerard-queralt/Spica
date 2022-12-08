@@ -17,8 +17,10 @@ void WindowWindow::DrawWindowContents()
 {
 	int width, height;
 	SDL_GetWindowSize(App->window->m_window, &width, &height);
-	bool widthChanged = ImGui::SliderInt("Window Width", &width, 640, 1920, "%d", ImGuiSliderFlags_AlwaysClamp);
-	bool heighChanged = ImGui::SliderInt("Window Height", &height, 360, 1080, "%d", ImGuiSliderFlags_AlwaysClamp);
+	ImGui::TextUnformatted("Window Width");
+	bool widthChanged = ImGui::SliderInt("##width", &width, 640, 1920, "%d", ImGuiSliderFlags_AlwaysClamp);
+	ImGui::TextUnformatted("Window Height");
+	bool heighChanged = ImGui::SliderInt("##height", &height, 360, 1080, "%d", ImGuiSliderFlags_AlwaysClamp);
 	if (widthChanged || heighChanged)
 		App->window->ResizeWindow(width, height);
 

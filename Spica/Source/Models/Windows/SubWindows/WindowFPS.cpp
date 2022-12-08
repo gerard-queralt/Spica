@@ -17,7 +17,8 @@ WindowFPS::~WindowFPS()
 void WindowFPS::DrawWindowContents()
 {
 	float maxFPS = App->GetFPS();
-	ImGui::SliderFloat("Max FPS", &maxFPS, 0.f, 120.f, "%.1f", ImGuiSliderFlags_AlwaysClamp);
+	ImGui::TextUnformatted("Max FPS");
+	ImGui::SliderFloat("##maxpfs", &maxFPS, 0.f, 120.f, "%.1f", ImGuiSliderFlags_AlwaysClamp);
 	App->SetFPS(maxFPS);
 		
 	int deltaTime = App->GetDeltaTime();
