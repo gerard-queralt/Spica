@@ -4,6 +4,7 @@
 #include "Models/Windows/SubWindows/WindowWindow.h"
 #include "Models/Windows/SubWindows/WindowInput.h"
 #include "Models/Windows/SubWindows/WindowRenderer.h"
+#include "Models/Windows/SubWindows/WindowCamera.h"
 
 WindowConfiguration::WindowConfiguration() : EditorWindow("Configuration")
 {
@@ -13,6 +14,7 @@ WindowConfiguration::WindowConfiguration() : EditorWindow("Configuration")
 	m_collapsingSubWindows.push_back(new WindowWindow());
 	m_collapsingSubWindows.push_back(new WindowInput());
 	m_collapsingSubWindows.push_back(new WindowRenderer());
+	m_collapsingSubWindows.push_back(new WindowCamera());
 }
 
 WindowConfiguration::~WindowConfiguration()

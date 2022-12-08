@@ -25,7 +25,7 @@ bool ModuleEditorCamera::Start()
 
 	int w, h;
 	SDL_GetWindowSize(App->window->m_window, &w, &h);
-	m_aspectRatio = ((float)w) / ((float)h);
+	SetAspectRatio(((float)w) / ((float)h));
 	SetFOVdeg(90.0f);
 
 	return true;
@@ -33,8 +33,7 @@ bool ModuleEditorCamera::Start()
 
 void ModuleEditorCamera::SetFOVrads(float i_rads)
 {
-	m_fovRads = i_rads;
-	m_frustum.SetHorizontalFovAndAspectRatio(m_fovRads, m_aspectRatio);
+	m_frustum.SetHorizontalFovAndAspectRatio(i_rads, m_frustum.AspectRatio());
 }
 
 void ModuleEditorCamera::SetFOVdeg(float i_deg)
@@ -44,8 +43,7 @@ void ModuleEditorCamera::SetFOVdeg(float i_deg)
 
 void ModuleEditorCamera::SetAspectRatio(float i_ratio)
 {
-	m_aspectRatio = i_ratio;
-	m_frustum.SetHorizontalFovAndAspectRatio(m_fovRads, m_aspectRatio);
+	m_frustum.SetHorizontalFovAndAspectRatio(m_frustum.HorizontalFov(), i_ratio);
 }
 
 void ModuleEditorCamera::SetPlaneDistances(float i_nearPlaneDistance, float i_farPlaneDistance)

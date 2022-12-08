@@ -212,6 +212,7 @@
     <ClCompile Include="Models\Windows\EditorWindows\WindowModel3D.cpp" />
     <ClCompile Include="Models\Windows\EditorWindows\WindowScene.cpp" />
     <ClCompile Include="Models\Windows\SubWindows\SubWindow.cpp" />
+    <ClCompile Include="Models\Windows\SubWindows\WindowCamera.cpp" />
     <ClCompile Include="Models\Windows\SubWindows\WindowFPS.cpp" />
     <ClCompile Include="Models\Windows\SubWindows\WindowInput.cpp" />
     <ClCompile Include="Models\Windows\SubWindows\WindowRenderer.cpp" />
@@ -328,6 +329,7 @@
     <ClInclude Include="Models\Windows\EditorWindows\WindowModel3D.h" />
     <ClInclude Include="Models\Windows\EditorWindows\WindowScene.h" />
     <ClInclude Include="Models\Windows\SubWindows\SubWindow.h" />
+    <ClInclude Include="Models\Windows\SubWindows\WindowCamera.h" />
     <ClInclude Include="Models\Windows\SubWindows\WindowFPS.h" />
     <ClInclude Include="Models\Windows\SubWindows\WindowInput.h" />
     <ClInclude Include="Models\Windows\SubWindows\WindowRenderer.h" />

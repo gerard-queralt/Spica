@@ -17,6 +17,18 @@ public:
 	float4x4 GetView() {
 		return m_frustum.ViewMatrix();
 	}
+	float GetFOVrads() {
+		return m_frustum.HorizontalFov();
+	}
+	float GetFOVdeg() {
+		return GetFOVrads() * (180.f / math::pi);
+	}
+	float GetNearPlaneDistance() {
+		return m_frustum.NearPlaneDistance();
+	}
+	float GetFarPlaneDistance() {
+		return m_frustum.FarPlaneDistance();
+	}
 
 	void SetFOVrads(float i_rads);
 	void SetFOVdeg(float i_deg);
@@ -42,8 +54,5 @@ public:
 
 private:
 	Frustum m_frustum;
-
-	float m_fovRads;
-	float m_aspectRatio;
 };
 
