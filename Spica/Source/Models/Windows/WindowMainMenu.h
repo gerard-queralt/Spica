@@ -1,11 +1,12 @@
 #pragma once
 
-#include "Window.h"
+#include "Models/Windows/Window.h"
 
 #include <list>
 #include <vector>
 
-#include "EditorWindows/EditorWindow.h"
+#include "Models/Windows/EditorWindows/EditorWindow.h"
+#include "Models/Windows/EditorWindows/WindowAbout.h"
 
 class WindowMainMenu : public Window
 {
@@ -26,10 +27,14 @@ public:
 
 private:
 	void DrawWindowsMenu();
+	void DrawAbout();
 	void DrawGithubLink();
 	void DrawExit();
 
 	static bool s_default;
+
+	WindowAbout* m_about = nullptr;
+	bool m_showAbout = false;
 
 	int m_nWindows;
 	std::vector<std::string> m_windowNames;

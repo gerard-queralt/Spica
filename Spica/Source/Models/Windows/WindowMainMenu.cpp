@@ -8,6 +8,8 @@ bool WindowMainMenu::s_default = true;
 
 WindowMainMenu::WindowMainMenu(std::list<EditorWindow*>& i_editorWindows) : Window("Main Menu")
 {
+	m_about = new WindowAbout();
+
 	m_nWindows = i_editorWindows.size();
 	for (std::list<EditorWindow*>::iterator it = i_editorWindows.begin(); it != i_editorWindows.end(); ++it) {
 		m_windowNames.push_back((*it)->GetName());
@@ -23,6 +25,7 @@ void WindowMainMenu::Draw(bool& i_enabled)
 {
 	if (ImGui::BeginMainMenuBar()) {
 		DrawWindowsMenu();
+		DrawAbout();
 		DrawGithubLink();
 		DrawExit();
 	}
@@ -39,6 +42,13 @@ void WindowMainMenu::DrawWindowsMenu()
 		}
 		ImGui::EndMenu();
 	}
+}
+
+void WindowMainMenu::DrawAbout()
+{
+	if (ImGui::MenuItem("About"))
+		m_showAbout = !m_showAbout;
+	m_about->Draw(m_showAbout);
 }
 
 void WindowMainMenu::DrawGithubLink()
