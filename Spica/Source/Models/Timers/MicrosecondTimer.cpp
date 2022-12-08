@@ -1,6 +1,6 @@
 #include "MicrosecondTimer.h"
 
-Uint64 MicrosecondTimer::PerformanceFrequency = SDL_GetPerformanceFrequency();
+Uint64 MicrosecondTimer::s_performanceFrequency = SDL_GetPerformanceFrequency();
 
 MicrosecondTimer::MicrosecondTimer()
 {
@@ -10,7 +10,12 @@ MicrosecondTimer::~MicrosecondTimer()
 {
 }
 
-int MicrosecondTimer::GetCurrentTime()
+unsigned long long MicrosecondTimer::GetCurrentTime()
 {
-	return SDL_GetPerformanceCounter() / PerformanceFrequency;
+	return SDL_GetPerformanceCounter();
+}
+
+void MicrosecondTimer::UpdateDeltaTime()
+{
+	m_deltaTime = (GetCurrentTime() - m_startTime) * 1000000L / s_performanceFrequency;
 }

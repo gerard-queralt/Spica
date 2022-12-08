@@ -4,17 +4,15 @@ class Timer
 {
 public:
 	void Start();
-	int Read();
-	int Stop();
-
-private:
-	void UpdateDeltaTime();
+	unsigned long long Read();
+	unsigned long long Stop();
 
 protected:
-	virtual int GetCurrentTime() = 0;
+	virtual unsigned long long GetCurrentTime() = 0;
+	virtual void UpdateDeltaTime() = 0;
 
-	int m_startTime = 0;
-	int m_deltaTime = 0;
+	unsigned long long m_startTime = 0L;
+	unsigned long long m_deltaTime = 0L;
 	bool m_stopped = false;
 };
 

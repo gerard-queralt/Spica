@@ -10,7 +10,12 @@ MillisecondTimer::~MillisecondTimer()
 {
 }
 
-int MillisecondTimer::GetCurrentTime()
+unsigned long long MillisecondTimer::GetCurrentTime()
 {
 	return SDL_GetTicks();
+}
+
+void MillisecondTimer::UpdateDeltaTime()
+{
+	m_deltaTime = GetCurrentTime() - m_startTime;
 }

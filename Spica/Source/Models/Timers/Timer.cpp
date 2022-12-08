@@ -7,7 +7,7 @@ void Timer::Start()
     m_deltaTime = 0;
 }
 
-int Timer::Read()
+unsigned long long Timer::Read()
 {
     if (!m_stopped) {
         UpdateDeltaTime();
@@ -15,14 +15,9 @@ int Timer::Read()
     return m_deltaTime;
 }
 
-int Timer::Stop()
+unsigned long long Timer::Stop()
 {
     UpdateDeltaTime();
     m_stopped = true;
     return Read();
-}
-
-void Timer::UpdateDeltaTime()
-{
-    m_deltaTime = GetCurrentTime() - m_startTime;
 }

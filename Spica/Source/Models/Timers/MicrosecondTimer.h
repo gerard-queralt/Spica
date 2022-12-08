@@ -11,9 +11,10 @@ public:
 	~MicrosecondTimer();
 
 protected:
-	int GetCurrentTime();
+	unsigned long long GetCurrentTime();
+	void UpdateDeltaTime();
 
 private:
-	static Uint64 PerformanceFrequency;
+	static Uint64 s_performanceFrequency;
 };
 

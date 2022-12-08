@@ -9,6 +9,7 @@ public:
 	~MillisecondTimer();
 
 protected:
-	int GetCurrentTime();
+	unsigned long long GetCurrentTime();
+	void UpdateDeltaTime();
 };
 
