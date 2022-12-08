@@ -4,7 +4,6 @@
 #include "ModuleWindow.h"
 #include "SDL.h"
 #include "Math/float3x3.h"
-#include "Geometry/Sphere.h"
 
 ModuleEditorCamera::ModuleEditorCamera()
 {
@@ -148,14 +147,31 @@ void ModuleEditorCamera::Rotate(float i_thetaXRad, float i_thetaYRad, float i_th
 	Rotate(float3(i_thetaXRad, i_thetaYRad, i_thetaZRad));
 }
 
-void ModuleEditorCamera::FocusOn(const AABB* i_aabb)
+void ModuleEditorCamera::FocusOn(const float3& i_pointToFocus)
 {
-	float3 enclosingSpherePos = i_aabb->MinimalEnclosingSphere().pos;
-
-	float3 direction = enclosingSpherePos - m_frustum.Pos();
+	float3 direction = i_pointToFocus - m_frustum.Pos();
 
 	float3x3 rotMat = 
 		float3x3::LookAt(m_frustum.Front().Normalized(), direction.Normalized(), m_frustum.Up().Normalized(), float3::unitY);
 
 	Rotate(rotMat);
+}
+
+void ModuleEditorCamera::Orbit(const float3& i_pointToOrbit, const float3& i_thetasRad)
+{
+	Rotate(i_thetasRad);
+
+	float3 oldFront = m_frustum.Front().Normalized();
+	float distanceToPoint = i_pointToOrbit.Distance(m_frustum.Pos());
+
+	float3 newPos = i_pointToOrbit - oldFront * distanceToPoint;
+
+	SetPosition(newPos);
+}
+
+void ModuleEditorCamera::Zoom(float i_deltaZoom, bool i_increaseZoom)
+{
+	if (!i_increaseZoom)
+		i_deltaZoom *= -1;
+	Translate(i_deltaZoom, 0.f, 0.f);
 }

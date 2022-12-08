@@ -27,6 +27,7 @@ public:
 	void UpdateBuffers(unsigned i_width, unsigned i_height);
 	void SetModel3D(const char* i_modelPath);
 	void FocusCameraOnModel();
+	void OrbitCameraAroundModel(const float3& i_thetasRad);
 	void SetShaders(const char* i_vertexShader, const char* i_fragmentShader);
 
 	float4x4 GetModel() {

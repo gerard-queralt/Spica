@@ -41,6 +41,7 @@ update_status ModuleInput::Update()
 
     char* dropfileDir;
     bool mouseMotion = false;
+    bool zoomChanged = false;
 
     while (SDL_PollEvent(&sdlEvent) != 0)
     {
@@ -56,13 +57,20 @@ update_status ModuleInput::Update()
             case SDL_MOUSEBUTTONDOWN:
                 if (sdlEvent.button.button == SDL_BUTTON_RIGHT)
                     m_rightButtonPressed = true;
+                if (sdlEvent.button.button == SDL_BUTTON_LEFT)
+                    m_leftButtonPressed = true;
                 break;
             case SDL_MOUSEBUTTONUP:
                 if (sdlEvent.button.button == SDL_BUTTON_RIGHT)
                     m_rightButtonPressed = false;
+                if (sdlEvent.button.button == SDL_BUTTON_LEFT)
+                    m_leftButtonPressed = false;
                 break;
             case SDL_MOUSEMOTION:
                 mouseMotion = true;
+                break;
+            case SDL_MOUSEWHEEL:
+                zoomChanged = true;
                 break;
             case SDL_DROPFILE:
                 dropfileDir = sdlEvent.drop.file;
@@ -73,35 +81,36 @@ update_status ModuleInput::Update()
     }
 
     m_keyboard = SDL_GetKeyboardState(NULL);
+    int deltaTime = App->GetDeltaTime();
 
-    if (m_rightButtonPressed && App->editor->IsSceneFocused()) {
-        int deltaTime = App->GetDeltaTime();
+    if (App->editor->IsSceneFocused()) {
+        if (m_rightButtonPressed) {
+            //translate camera
+            float3 deltaPosVec = float3::zero;
+            float deltaPos = m_cameraSpeed * deltaTime;
+            if (m_keyboard[SDL_SCANCODE_LSHIFT])
+                deltaPos *= 2;
 
-        //translate camera
-        float3 deltaPosVec = float3::zero;
-        float deltaPos = m_cameraSpeed * deltaTime;
-        if (m_keyboard[SDL_SCANCODE_LSHIFT])
-            deltaPos *= 2;
-
-        if (m_keyboard[SDL_SCANCODE_W]) {
-            deltaPosVec.x += deltaPos;
+            if (m_keyboard[SDL_SCANCODE_W]) {
+                deltaPosVec.x += deltaPos;
+            }
+            if (m_keyboard[SDL_SCANCODE_S]) {
+                deltaPosVec.x -= deltaPos;
+            }
+            if (m_keyboard[SDL_SCANCODE_Q]) {
+                deltaPosVec.y += deltaPos;
+            }
+            if (m_keyboard[SDL_SCANCODE_E]) {
+                deltaPosVec.y -= deltaPos;
+            }
+            if (m_keyboard[SDL_SCANCODE_D]) {
+                deltaPosVec.z += deltaPos;
+            }
+            if (m_keyboard[SDL_SCANCODE_A]) {
+                deltaPosVec.z -= deltaPos;
+            }
+            App->camera->Translate(deltaPosVec);
         }
-        if (m_keyboard[SDL_SCANCODE_S]) {
-            deltaPosVec.x -= deltaPos;
-        }
-        if (m_keyboard[SDL_SCANCODE_Q]) {
-            deltaPosVec.y += deltaPos;
-        }
-        if (m_keyboard[SDL_SCANCODE_E]) {
-            deltaPosVec.y -= deltaPos;
-        }
-        if (m_keyboard[SDL_SCANCODE_D]) {
-            deltaPosVec.z += deltaPos;
-        }
-        if (m_keyboard[SDL_SCANCODE_A]) {
-            deltaPosVec.z -= deltaPos;
-        }
-        App->camera->Translate(deltaPosVec);
 
         if (mouseMotion) {
             //rotate camera
@@ -109,12 +118,23 @@ update_status ModuleInput::Update()
             float deltaAngle = m_angleSpeed * deltaTime;
             deltaRot.x = -deltaAngle * sdlEvent.motion.xrel;
             deltaRot.y = -deltaAngle * sdlEvent.motion.yrel;
-            App->camera->Rotate(deltaRot);
+            if (m_rightButtonPressed) {
+                App->camera->Rotate(deltaRot);
+            }
+            else if (m_leftButtonPressed && m_keyboard[SDL_SCANCODE_LALT]) {
+                App->renderer->OrbitCameraAroundModel(deltaRot);
+            }
         }
-    }
 
-    if (m_keyboard[SDL_SCANCODE_F])
-        App->renderer->FocusCameraOnModel();
+        if (zoomChanged) {
+            bool zoomIncreased = sdlEvent.wheel.y >= 0;
+            float deltaZoom = m_zoomSpeed * deltaTime;
+            App->camera->Zoom(deltaZoom, zoomIncreased);
+        }
+
+        if (m_keyboard[SDL_SCANCODE_F])
+            App->renderer->FocusCameraOnModel();
+    }
 
     return UPDATE_CONTINUE;
 }

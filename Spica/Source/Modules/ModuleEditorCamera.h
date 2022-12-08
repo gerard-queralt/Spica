@@ -2,7 +2,6 @@
 
 #include "Module.h"
 #include "Geometry/Frustum.h"
-#include "Geometry/AABB.h"
 
 class ModuleEditorCamera : public Module
 {
@@ -37,7 +36,9 @@ public:
 	void Rotate(const float3& i_thetasRad);
 	void Rotate(float i_thetaXRad, float i_thetaYRad, float i_thetaZRad);
 
-	void FocusOn(const AABB* i_aabb);
+	void FocusOn(const float3& i_pointToFocus);
+	void Orbit(const float3& i_pointToOrbit, const float3& i_thetasRad);
+	void Zoom(float i_deltaZoom, bool i_increaseZoom);
 
 private:
 	Frustum m_frustum;

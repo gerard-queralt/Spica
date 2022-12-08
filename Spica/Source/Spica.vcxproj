@@ -205,6 +205,7 @@
     <ClCompile Include="Models\Timers\MillisecondTimer.cpp" />
     <ClCompile Include="Models\Timers\Timer.cpp" />
     <ClCompile Include="Models\Windows\EditorWindows\EditorWindow.cpp" />
+    <ClCompile Include="Models\Windows\EditorWindows\WindowAbout.cpp" />
     <ClCompile Include="Models\Windows\EditorWindows\WindowConfiguration.cpp" />
     <ClCompile Include="Models\Windows\EditorWindows\WindowConsole.cpp" />
     <ClCompile Include="Models\Windows\EditorWindows\WindowHardware.cpp" />
@@ -320,6 +321,7 @@
     <ClInclude Include="Models\Timers\MillisecondTimer.h" />
     <ClInclude Include="Models\Timers\Timer.h" />
     <ClInclude Include="Models\Windows\EditorWindows\EditorWindow.h" />
+    <ClInclude Include="Models\Windows\EditorWindows\WindowAbout.h" />
     <ClInclude Include="Models\Windows\EditorWindows\WindowConfiguration.h" />
     <ClInclude Include="Models\Windows\EditorWindows\WindowConsole.h" />
     <ClInclude Include="Models\Windows\EditorWindows\WindowHardware.h" />

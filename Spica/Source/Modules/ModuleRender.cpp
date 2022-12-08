@@ -7,6 +7,7 @@
 #include "ModuleEditor.h"
 #include "SDL_render.h"
 #include "ModuleEditorCamera.h"
+#include "Geometry/Sphere.h"
 
 ModuleRender::ModuleRender()
 {
@@ -160,8 +161,18 @@ void ModuleRender::SetModel3D(const char* i_modelPath)
 
 void ModuleRender::FocusCameraOnModel()
 {
-	if (m_model3D != nullptr)
-		App->camera->FocusOn(m_model3D->GetAABB());
+	if (m_model3D != nullptr) {
+		float3 posToFocus = m_model3D->GetAABB()->MinimalEnclosingSphere().Centroid();
+		App->camera->FocusOn(posToFocus);
+	}
+}
+
+void ModuleRender::OrbitCameraAroundModel(const float3& i_thetasRad)
+{
+	if (m_model3D != nullptr) {
+		float3 posToOrbit = m_model3D->GetAABB()->Centroid();
+		App->camera->Orbit(posToOrbit, i_thetasRad);
+	}
 }
 
 void ModuleRender::SetShaders(const char* i_vertexShader, const char* i_fragmentShader)

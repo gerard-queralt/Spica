@@ -232,6 +232,9 @@
     <ClCompile Include="Models\Windows\EditorWindows\WindowScene.cpp">
       <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClCompile>
+    <ClCompile Include="Models\Windows\EditorWindows\WindowAbout.cpp">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -581,6 +584,9 @@
     </ClInclude>
     <ClInclude Include="Resources\ApplicationIcon\resource.h">
       <Filter>Resources\Application Icon</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Windows\EditorWindows\WindowAbout.h">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
