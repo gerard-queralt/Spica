@@ -579,6 +579,9 @@
     <ClInclude Include="Models\Windows\EditorWindows\WindowScene.h">
       <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClInclude>
+    <ClInclude Include="Resources\ApplicationIcon\resource.h">
+      <Filter>Resources\Application Icon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -632,6 +635,12 @@
     <Filter Include="Source\Models\Windows\SubWindows">
       <UniqueIdentifier>{6bddb1fd-b581-4a22-8ed7-2f6d37603504}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{4d9ab8d9-f9ac-4f65-8457-e04f1d5985e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Application Icon">
+      <UniqueIdentifier>{1f18211b-7242-45e8-9cba-8d4657534357}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\External\MathGeoLib\Include\Geometry\KDTree.inl">
@@ -655,5 +664,13 @@
     <None Include="..\External\MathGeoLib\Include\Math\Matrix.inl">
       <Filter>External\MathGeoLib\Math</Filter>
     </None>
+    <None Include="Resources\ApplicationIcon\Spica.aps">
+      <Filter>Resources\Application Icon</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources\ApplicationIcon\Spica.rc">
+      <Filter>Resources\Application Icon</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
