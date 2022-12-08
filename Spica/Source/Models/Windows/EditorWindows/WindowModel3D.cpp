@@ -14,6 +14,18 @@ WindowModel3D::~WindowModel3D()
 void WindowModel3D::DrawWindowContents()
 {
 	if (m_model != nullptr) {
+		//AABB related info
+		AABB* modelAABB = m_model->m_aabb;
+		std::string centerFormatted = FormatFloat3AsString(modelAABB->CenterPoint());
+		ImGui::TextUnformatted(("AABB Center: " + centerFormatted).c_str());
+		std::string minPoint = FormatFloat3AsString(modelAABB->minPoint);
+		ImGui::TextUnformatted(("AABB Min Point: " + minPoint).c_str());
+		std::string maxPoint = FormatFloat3AsString(modelAABB->maxPoint);
+		ImGui::TextUnformatted(("AABB Max Point: " + maxPoint).c_str());
+
+		ImGui::Separator();
+
+		//Mesh related information
 		std::list<Mesh*> modelMeshes = m_model->m_meshes;
 		int meshNumber = 1;
 		for (std::list<Mesh*>::iterator it = modelMeshes.begin(); it != modelMeshes.end(); ++it) {
@@ -36,4 +48,9 @@ void WindowModel3D::DrawWindowContents()
 void WindowModel3D::SetModel(const Model3D* i_model)
 {
 	m_model = i_model;
+}
+
+std::string WindowModel3D::FormatFloat3AsString(const float3& i_point)
+{
+	return std::to_string(i_point.x) + ", " + std::to_string(i_point.y) + ", " + std::to_string(i_point.z);
 }
