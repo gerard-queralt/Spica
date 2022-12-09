@@ -62,6 +62,8 @@ Almost all parameters of the program can be changed through its graphical interf
 
 - The VRAM information will not be displayed when running on an Intel integrated card, due to a limitation of the method used to access said information.
 
+- With small rotation speed (<0.0025) the functionality to orbit the model does not work properly.
+
 ## Additional comments
 
 Even though the functionality of the engine is, quite frankly, limited, as stated before, I'm very proud of my architectural work. I tried to organize and separate the different functions to make the code follow the SOLID design principles. This also made it so there is little repeated code, so changes can be made quickly and propagate in a transparent manner. Also, the different class hierarchies used - most notably [Window](https://github.com/gerard-queralt/Spica/tree/main/Spica/Source/Models/Windows) - allow for easy extension of the software with minimal work required.
