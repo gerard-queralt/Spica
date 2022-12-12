@@ -83,8 +83,6 @@ void ModuleEditorCamera::SetLookAt(float i_x, float i_y, float i_z)
 
 void ModuleEditorCamera::Translate(const float3& i_deltaCoords)
 {
-	float3 deltaCoordsWithRespectFront = m_frustum.Front().Mul(i_deltaCoords);
-
 	float3 translationColumn = float3::zero;
 	translationColumn += m_frustum.Front().Normalized() * i_deltaCoords.x;
 	translationColumn += float3::unitY * i_deltaCoords.y;
