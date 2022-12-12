@@ -2,8 +2,8 @@
 
 #include <list>
 
-#include "Component.h"
-#include "ComponentTransform.h"
+#include "Models/Components/Component.h"
+#include "Models/Components/ComponentTransform.h"
 
 class GameObject
 {
