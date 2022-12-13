@@ -140,7 +140,7 @@ void ModuleEditorCamera::Rotate(const float2& i_thetasRad)
 		rotationMat = rotationX;
 	}
 
-	m_camera->GetParent()->m_transform->Rotate(rotationMat);
+	m_camera->GetParent()->m_transform->SetRotation(rotationMat);
 	m_camera->UpdateRotationWithTransform();
 }
 

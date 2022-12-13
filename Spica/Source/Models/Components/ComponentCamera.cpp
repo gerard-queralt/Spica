@@ -62,7 +62,7 @@ void ComponentCamera::LookAt(const float3& i_pointToFocus)
 
 void ComponentCamera::Orbit(const float3& i_pointToOrbit, const float2& i_thetasRad)
 {
-	this->GetParent()->m_transform->Rotate(float3(i_thetasRad, 0.f));
+	this->GetParent()->m_transform->SetRotation(float3(i_thetasRad, 0.f));
 	this->UpdateRotationWithTransform();
 
 	float3 oldFront = m_frustum.Front().Normalized();
