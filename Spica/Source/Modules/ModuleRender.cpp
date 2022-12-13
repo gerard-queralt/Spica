@@ -163,11 +163,11 @@ void ModuleRender::FocusCameraOnModel()
 {
 	if (m_model3D != nullptr) {
 		float3 posToFocus = m_model3D->GetAABB()->MinimalEnclosingSphere().Centroid();
-		App->camera->FocusOn(posToFocus);
+		App->camera->LookAt(posToFocus);
 	}
 }
 
-void ModuleRender::OrbitCameraAroundModel(const float3& i_thetasRad)
+void ModuleRender::OrbitCameraAroundModel(const float2& i_thetasRad)
 {
 	if (m_model3D != nullptr) {
 		float3 posToOrbit = m_model3D->GetAABB()->Centroid();
