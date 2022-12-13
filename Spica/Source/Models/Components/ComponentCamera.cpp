@@ -7,6 +7,9 @@
 
 ComponentCamera::ComponentCamera(GameObject* i_gameObject) : Component(i_gameObject)
 {
+	m_frustum.SetKind(FrustumProjectiveSpace::FrustumSpaceGL, FrustumHandedness::FrustumRightHanded);
+	m_frustum.SetFront(-float3::unitZ);
+	m_frustum.SetUp(float3::unitY);
 }
 
 ComponentCamera::~ComponentCamera()
@@ -15,7 +18,6 @@ ComponentCamera::~ComponentCamera()
 
 void ComponentCamera::Start()
 {
-	m_frustum.SetKind(FrustumProjectiveSpace::FrustumSpaceGL, FrustumHandedness::FrustumRightHanded);
 	UpdateFrustrumWithTransform();
 }
 
@@ -51,12 +53,17 @@ void ComponentCamera::LookAt(const float3& i_pointToFocus)
 	float3x3 rotMat =
 		float3x3::LookAt(m_frustum.Front().Normalized(), direction.Normalized(), m_frustum.Up().Normalized(), float3::unitY);
 
-	this->GetParent()->m_transform->Rotate(rotMat);
+	float3 oldFront = m_frustum.Front().Normalized();
+	m_frustum.SetFront(rotMat.MulDir(oldFront));
+
+	float3 oldUp = m_frustum.Up().Normalized();
+	m_frustum.SetUp(rotMat.MulDir(oldUp));
 }
 
-void ComponentCamera::Orbit(const float3& i_pointToOrbit, const float3& i_thetasRad)
+void ComponentCamera::Orbit(const float3& i_pointToOrbit, const float2& i_thetasRad)
 {
-	this->GetParent()->m_transform->Rotate(i_thetasRad);
+	this->GetParent()->m_transform->Rotate(float3(i_thetasRad, 0.f));
+	this->UpdateRotationWithTransform();
 
 	float3 oldFront = m_frustum.Front().Normalized();
 	float distanceToPoint = i_pointToOrbit.Distance(m_frustum.Pos());
@@ -73,12 +80,18 @@ void ComponentCamera::Zoom(float i_deltaZoom, bool i_increaseZoom)
 	this->GetParent()->m_transform->Translate(float3(i_deltaZoom, 0.f, 0.f));
 }
 
+void ComponentCamera::UpdateRotationWithTransform()
+{
+	ComponentTransform* parentTransform = this->GetParent()->m_transform;
+	float3x3 rotationMatrix = float3x3::FromQuat(parentTransform->GetRotation());
+	float3 oldFront = m_frustum.Front().Normalized();
+	float3 oldUp = m_frustum.Up().Normalized();
+	m_frustum.SetFront(rotationMatrix.MulDir(oldFront));
+	m_frustum.SetUp(rotationMatrix.MulDir(oldUp));
+}
+
 void ComponentCamera::UpdateFrustrumWithTransform()
 {
 	ComponentTransform* parentTransform = this->GetParent()->m_transform;
 	m_frustum.SetPos(parentTransform->GetPosition());
-
-	float3x3 rotationMatrix = float3x3::FromQuat(parentTransform->GetRotation());
-	m_frustum.SetFront(rotationMatrix * float3::unitZ);
-	m_frustum.SetUp(rotationMatrix * float3::unitY);
 }

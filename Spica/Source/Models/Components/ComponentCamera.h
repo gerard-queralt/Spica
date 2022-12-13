@@ -51,8 +51,11 @@ public:
 	void SetPlaneDistances(float i_nearPlaneDistance, float i_farPlaneDistance);
 
 	void LookAt(const float3& i_pointToFocus);
-	void Orbit(const float3& i_pointToOrbit, const float3& i_thetasRad);
+	void Orbit(const float3& i_pointToOrbit, const float2& i_thetasRad);
 	void Zoom(float i_deltaZoom, bool i_increaseZoom);
+
+	//TMP
+	void UpdateRotationWithTransform();
 
 private:
 	void UpdateFrustrumWithTransform();

@@ -22,13 +22,15 @@ bool ModuleEditorCamera::Init()
 	m_camera = (ComponentCamera*)cameraParent->GetComponent(ComponentType::Camera);
 	
 	SetPosition(float3(0.0f, 3.0f, 5.0f));
-	LookAt(-float3::unitZ);
 	SetPlaneDistances(0.1f, 100.0f);
 
 	int w, h;
 	SDL_GetWindowSize(App->window->m_window, &w, &h);
 	SetAspectRatio(((float)w) / ((float)h));
 	SetFOVdeg(90.0f);
+
+	//TMP
+	m_camera->Start();
 
 	return true;
 }
@@ -131,9 +133,6 @@ void ModuleEditorCamera::Rotate(const float2& i_thetasRad)
 
 	float3x3 rotationMat = rotationX * rotationY;
 
-	float3 oldFront = m_camera->GetFront().Normalized();
-	float3 newFront = rotationMat.MulDir(oldFront);
-
 	float3 oldUp = m_camera->GetUp().Normalized();
 	float3 newUp = rotationMat.MulDir(oldUp);
 
@@ -142,6 +141,7 @@ void ModuleEditorCamera::Rotate(const float2& i_thetasRad)
 	}
 
 	m_camera->GetParent()->m_transform->Rotate(rotationMat);
+	m_camera->UpdateRotationWithTransform();
 }
 
 void ModuleEditorCamera::Rotate(float i_thetaXRad, float i_thetaYRad)
@@ -151,29 +151,15 @@ void ModuleEditorCamera::Rotate(float i_thetaXRad, float i_thetaYRad)
 
 void ModuleEditorCamera::LookAt(const float3& i_pointToFocus)
 {
-	float3 direction = i_pointToFocus - m_camera->GetParent()->m_transform->GetPosition();
-
-	float3x3 rotMat = float3x3::LookAt(m_camera->GetFront().Normalized(),
-			direction.Normalized(),
-			m_camera->GetUp().Normalized(),
-			float3::unitY);
-
-	m_camera->GetParent()->m_transform->Rotate(rotMat);
+	m_camera->LookAt(i_pointToFocus);
 }
 
 void ModuleEditorCamera::Orbit(const float3& i_pointToOrbit, const float2& i_thetasRad)
 {
-	float3 oldFront = m_camera->GetFront().Normalized();
-	float distanceToPoint = i_pointToOrbit.Distance(m_camera->GetParent()->m_transform->GetPosition());
-
-	float3 newPos = i_pointToOrbit - oldFront * distanceToPoint;
-
-	SetPosition(newPos);
+	m_camera->Orbit(i_pointToOrbit, i_thetasRad);
 }
 
 void ModuleEditorCamera::Zoom(float i_deltaZoom, bool i_increaseZoom)
 {
-	if (!i_increaseZoom)
-		i_deltaZoom *= -1;
-	Translate(i_deltaZoom, 0.f, 0.f);
+	m_camera->Zoom(i_deltaZoom, i_increaseZoom);
 }
