@@ -156,14 +156,7 @@ void ModuleEditorCamera::LookAt(const float3& i_pointToFocus)
 
 void ModuleEditorCamera::Orbit(const float3& i_pointToOrbit, const float2& i_thetasRad)
 {
-	Rotate(i_thetasRad);
-
-	float3 oldFront = m_camera->m_frustum.Front().Normalized();
-	float distanceToPoint = i_pointToOrbit.Distance(m_camera->m_frustum.Pos());
-
-	float3 newPos = i_pointToOrbit - oldFront * distanceToPoint;
-
-	m_camera->m_frustum.SetPos(newPos);
+	m_camera->Orbit(i_pointToOrbit, i_thetasRad);
 }
 
 void ModuleEditorCamera::Zoom(float i_deltaZoom, bool i_increaseZoom)

@@ -74,17 +74,15 @@ void ComponentCamera::Orbit(const float3& i_pointToOrbit, const float2& i_thetas
 		rotationMat = rotationX;
 	}
 
+	GetParent()->m_transform->SetRotation(rotationMat);
+	UpdateRotationWithTransform();
+
 	float3 oldFront = m_frustum.Front().Normalized();
-	m_frustum.SetFront(rotationMat.MulDir(oldFront));
-
-	m_frustum.SetUp(rotationMat.MulDir(oldUp));
-
-	oldFront = m_frustum.Front().Normalized();
 	float distanceToPoint = i_pointToOrbit.Distance(m_frustum.Pos());
 
 	float3 newPos = i_pointToOrbit - oldFront * distanceToPoint;
 
-	m_frustum.SetPos(newPos);
+	GetParent()->m_transform->SetPosition(newPos);
 }
 
 void ComponentCamera::Zoom(float i_deltaZoom, bool i_increaseZoom)
