@@ -86,9 +86,9 @@ void ComponentCamera::Orbit(const float3& i_pointToOrbit, const float2& i_thetas
 
 void ComponentCamera::Zoom(float i_deltaZoom, bool i_increaseZoom)
 {
-	if (!i_increaseZoom)
+	if (i_increaseZoom)
 		i_deltaZoom *= -1;
-	this->GetParent()->m_transform->Translate(float3(i_deltaZoom, 0.f, 0.f));
+	this->GetParent()->m_transform->Translate(float3(0.f, 0.f, i_deltaZoom));
 }
 
 void ComponentCamera::UpdateFrustrumWithTransform()
