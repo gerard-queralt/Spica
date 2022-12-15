@@ -238,11 +238,11 @@
     <ClCompile Include="Models\Windows\SubWindows\WindowCamera.cpp">
       <Filter>Source\Models\Windows\SubWindows</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source\Models\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="ComponentTransform.cpp">
+    <ClCompile Include="Models\Components\ComponentTransform.cpp">
       <Filter>Source\Models\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Models\GameObject\GameObject.cpp">
+      <Filter>Source\Models\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -600,14 +600,14 @@
     <ClInclude Include="Models\Windows\SubWindows\WindowCamera.h">
       <Filter>Source\Models\Windows\SubWindows</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
+    <ClInclude Include="Models\Components\Component.h">
       <Filter>Source\Models\Components</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
+    <ClInclude Include="Models\Components\ComponentTransform.h">
+      <Filter>Source\Models\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\GameObject\GameObject.h">
       <Filter>Source\Models\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="ComponentTransform.h">
-      <Filter>Source\Models\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
