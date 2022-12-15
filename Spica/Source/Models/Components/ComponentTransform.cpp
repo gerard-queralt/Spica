@@ -76,9 +76,7 @@ void ComponentTransform::Translate(float i_deltaX, float i_deltaY, float i_delta
 
 void ComponentTransform::Rotate(const float4x4& i_rotationMatrix)
 {
-	float4x4 orthonormalMat = i_rotationMatrix;
-	orthonormalMat.Orthonormalize3();
-	Quat newRotation = m_rotation * Quat(orthonormalMat);
+	Quat newRotation = m_rotation * Quat(i_rotationMatrix);
 	m_rotation = newRotation;
 }
 

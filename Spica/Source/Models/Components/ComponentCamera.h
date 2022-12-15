@@ -54,12 +54,11 @@ public:
 	void Orbit(const float3& i_pointToOrbit, const float2& i_thetasRad);
 	void Zoom(float i_deltaZoom, bool i_increaseZoom);
 
+	Frustum m_frustum;
+
 	//TMP
 	void UpdateRotationWithTransform();
-
-private:
 	void UpdateFrustrumWithTransform();
-
-	Frustum m_frustum;
+private:
 };
 
