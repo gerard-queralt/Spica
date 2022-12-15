@@ -47,7 +47,7 @@ HRESULT ModuleTexture::LoadImageFromFile(const std::string& i_texturePathInModel
     std::string textureName = GetImageNameFromPath(i_texturePathInModel);
     DirectX::ScratchImage image;
 
-    App->editor->OutputToConsole(("Loading texture " + textureName).c_str());
+    App->editor->OutputToConsole("Loading texture " + textureName);
     
     //try loading path in FBX
     App->editor->OutputToConsole("Attempting to load texture on the path described in the FBX...");
@@ -68,7 +68,7 @@ HRESULT ModuleTexture::LoadImageFromFile(const std::string& i_texturePathInModel
     }
 
     if (FAILED(res)) {
-        App->editor->OutputToConsole(("Texture " + textureName + " failed to load").c_str());
+        App->editor->OutputToConsole("Texture " + textureName + " failed to load");
     }
     else {
         App->editor->OutputToConsole("Texture loaded successfully!");

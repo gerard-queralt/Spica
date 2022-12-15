@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include <string>
 
 #include "Models/Components/Component.h"
 #include "Models/Components/ComponentTransform.h"
@@ -8,7 +9,7 @@
 class GameObject
 {
 public:
-	GameObject(const char* i_name) {
+	GameObject(const std::string& i_name) {
 		m_name = i_name;
 		m_transform = new ComponentTransform(this);
 		m_components.push_back(m_transform);
@@ -23,7 +24,7 @@ public:
 	const Component* GetComponent(ComponentType i_componentType) const;
 	void RemoveComponent(ComponentType i_componentType);
 
-	const char* m_name;
+	std::string m_name;
 	ComponentTransform* m_transform;
 
 private:

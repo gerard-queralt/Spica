@@ -85,7 +85,7 @@ bool ModuleRender::Start()
 		float4x4::identity,
 		float3(1.0f));
 
-	SetModel3D((Model3D::s_modelFolderPath + "BakerHouse.fbx").c_str());
+	SetModel3D(Model3D::s_modelFolderPath + "BakerHouse.fbx");
 
 	return true;
 }
@@ -151,7 +151,7 @@ void ModuleRender::UpdateBuffers(unsigned int i_width, unsigned int i_height)
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void ModuleRender::SetModel3D(const char* i_modelPath)
+void ModuleRender::SetModel3D(const std::string& i_modelPath)
 {
 	delete m_model3D;
 	m_model3D = Model3D::LoadFromFile(i_modelPath);
@@ -175,7 +175,8 @@ void ModuleRender::OrbitCameraAroundModel(const float2& i_thetasRad)
 	}
 }
 
-void ModuleRender::SetShaders(const char* i_vertexShader, const char* i_fragmentShader)
+void ModuleRender::SetShaders(const std::string& i_vertexShader,
+							  const std::string& i_fragmentShader)
 {
 	m_vertexShader = i_vertexShader;
 	m_fragmentShader = i_fragmentShader;

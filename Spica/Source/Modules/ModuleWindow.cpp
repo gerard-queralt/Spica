@@ -20,8 +20,8 @@ bool ModuleWindow::Init()
 
 	if(SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
-		std::string sdlError = "SDL_VIDEO could not initialize! SDL_Error: " + std::string(SDL_GetError()) + "\n";
-		App->editor->OutputToConsole(sdlError.c_str());
+		App->editor->OutputToConsole("SDL_VIDEO could not initialize! SDL_Error: "
+									 + std::string(SDL_GetError()) + "\n");
 		ret = false;
 	}
 	else
@@ -40,8 +40,8 @@ bool ModuleWindow::Init()
 
 		if(m_window == NULL)
 		{
-			std::string sdlError = "Window could not be created! SDL_Error: " + std::string(SDL_GetError()) + "\n";
-			App->editor->OutputToConsole(sdlError.c_str());
+			App->editor->OutputToConsole("Window could not be created! SDL_Error: "
+										 + std::string(SDL_GetError()) + "\n");
 			ret = false;
 		}
 		else

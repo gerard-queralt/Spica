@@ -26,8 +26,8 @@ bool ModuleInput::Init()
 
 	if(SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
-        std::string errorLog = "SDL_EVENTS could not initialize! SDL_Error: " + std::string(SDL_GetError()) + "\n";
-        App->editor->OutputToConsole(errorLog.c_str());
+        App->editor->OutputToConsole("SDL_EVENTS could not initialize! SDL_Error: "
+                                     + std::string(SDL_GetError()) + "\n");
 		ret = false;
 	}
 
@@ -74,7 +74,7 @@ update_status ModuleInput::Update()
                 break;
             case SDL_DROPFILE:
                 dropfileDir = sdlEvent.drop.file;
-                App->editor->OutputToConsole(("File dropped: " + std::string(dropfileDir)).c_str());
+                App->editor->OutputToConsole("File dropped: " + std::string(dropfileDir));
                 App->renderer->SetModel3D(dropfileDir);
                 break;
         }

@@ -25,10 +25,10 @@ public:
 	bool CleanUp() override;
 
 	void UpdateBuffers(unsigned int i_width, unsigned int i_height);
-	void SetModel3D(const char* i_modelPath);
+	void SetModel3D(const std::string& i_modelPath);
 	void FocusCameraOnModel();
 	void OrbitCameraAroundModel(const float2& i_thetasRad);
-	void SetShaders(const char* i_vertexShader, const char* i_fragmentShader);
+	void SetShaders(const std::string& i_vertexShader, const std::string& i_fragmentShader);
 
 	inline const float4x4& GetModel() const {
 		return m_model;
@@ -36,10 +36,10 @@ public:
 	inline GLuint GetProgram() const {
 		return m_program;
 	}
-	inline const char* GetVertexShader() const {
+	inline const std::string& GetVertexShader() const {
 		return m_vertexShader;
 	}
-	inline const char* GetFragmentShader() const {
+	inline const std::string& GetFragmentShader() const {
 		return m_fragmentShader;
 	}
 
@@ -57,6 +57,6 @@ private:
 	GLuint m_program;
 	Model3D* m_model3D;
 	float4x4 m_model;
-	const char* m_vertexShader = "default_vertex.glsl";
-	const char* m_fragmentShader = "default_fragment.glsl";
+	std::string m_vertexShader = "default_vertex.glsl";
+	std::string m_fragmentShader = "default_fragment.glsl";
 };

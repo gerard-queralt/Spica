@@ -31,7 +31,7 @@ Model3D::~Model3D()
 
 Model3D* Model3D::LoadFromFile(const std::string& i_fileName)
 {
-	App->editor->OutputToConsole(std::string("Loading model " + i_fileName + "...").c_str());
+	App->editor->OutputToConsole("Loading model " + i_fileName + "...");
 
 	if (!CheckValidFormat(i_fileName)) {
 		App->editor->OutputToConsole("File is not FBX");
@@ -62,8 +62,7 @@ Model3D* Model3D::LoadFromFile(const std::string& i_fileName)
 	}
 	else
 	{
-		std::string errorString = "Error loading " + i_fileName + ": " + aiGetErrorString();
-		App->editor->OutputToConsole(errorString.c_str());
+		App->editor->OutputToConsole("Error loading " + i_fileName + ": " + aiGetErrorString());
 		delete model;
 		return nullptr;
 	}

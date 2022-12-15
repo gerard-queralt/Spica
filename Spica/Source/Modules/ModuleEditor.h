@@ -24,7 +24,7 @@ public:
 	update_status PostUpdate() override;
 	bool CleanUp() override;
 
-	void OutputToConsole(const char* i_textToPrint);
+	void OutputToConsole(const std::string& i_textToPrint);
 	void SetTargetModel(const Model3D* i_model);
 	inline bool IsSceneFocused() const {
 		return m_scene->IsFocused();
