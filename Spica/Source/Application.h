@@ -1,8 +1,11 @@
 #pragma once
 
-#include<vector>
+#include <memory>
+#include <vector>
+
 #include "Globals.h"
 #include "Modules/Module.h"
+#include "Models/Timers/MillisecondTimer.h"
 
 class ModuleRender;
 class ModuleWindow;
@@ -27,14 +30,14 @@ public:
 	bool CleanUp();
 
 public:
-	ModuleRender* renderer = nullptr;
-	ModuleWindow* window = nullptr;
-	ModuleInput* input = nullptr;
-	ModuleProgram* program = nullptr;
-	ModuleEditorCamera* camera = nullptr;
-	ModuleEditor* editor = nullptr;
-	ModuleDebugDraw* debugDraw = nullptr;
-	ModuleTexture* texture = nullptr;
+	std::shared_ptr<ModuleRender> renderer;
+	std::shared_ptr<ModuleWindow> window;
+	std::shared_ptr<ModuleInput> input;
+	std::shared_ptr<ModuleProgram> program;
+	std::shared_ptr<ModuleEditorCamera> camera;
+	std::shared_ptr<ModuleEditor> editor;
+	std::shared_ptr<ModuleDebugDraw> debugDraw;
+	std::shared_ptr<ModuleTexture> texture;
 
 	inline int GetDeltaTime() const {
 		return m_deltaTime;
@@ -49,11 +52,11 @@ public:
 	}
 
 private:
-	std::vector<Module*> m_modules;
+	std::vector<std::shared_ptr<Module> > m_modules;
 
 	float m_framesPerSecond = 60.f;
 
-	Timer* m_timer = nullptr;
+	std::unique_ptr<MillisecondTimer> m_timer;
 	int m_prevTime = 0;
 	int m_deltaTime = 0;
 };

@@ -16,24 +16,20 @@ using namespace std;
 Application::Application()
 {
 	// Order matters: they will Init/start/update in this order
-	m_modules.push_back(editor = new ModuleEditor());
-	m_modules.push_back(window = new ModuleWindow());
-	m_modules.push_back(renderer = new ModuleRender());
-	m_modules.push_back(input = new ModuleInput());
-	m_modules.push_back(program = new ModuleProgram());
-	m_modules.push_back(camera = new ModuleEditorCamera());
-	m_modules.push_back(debugDraw = new ModuleDebugDraw());
-	m_modules.push_back(texture = new ModuleTexture());
+	m_modules.push_back(editor = std::make_shared<ModuleEditor>());
+	m_modules.push_back(window = std::make_shared<ModuleWindow>());
+	m_modules.push_back(renderer = std::make_shared<ModuleRender>());
+	m_modules.push_back(input = std::make_shared<ModuleInput>());
+	m_modules.push_back(program = std::make_shared<ModuleProgram>());
+	m_modules.push_back(camera = std::make_shared<ModuleEditorCamera>());
+	m_modules.push_back(debugDraw = std::make_shared<ModuleDebugDraw>());
+	m_modules.push_back(texture = std::make_shared<ModuleTexture>());
 	
-	m_timer = new MillisecondTimer();
+	m_timer = std::make_unique<MillisecondTimer>();
 }
 
 Application::~Application()
 {
-	for(Module* module : m_modules)
-    {
-        delete module;
-    }
 	m_modules.clear();
 }
 
@@ -91,7 +87,9 @@ bool Application::CleanUp()
 {
 	bool ret = true;
 
-	for(vector<Module*>::reverse_iterator it = m_modules.rbegin(); it != m_modules.rend() && ret; ++it)
+	for(vector<std::shared_ptr<Module>>::reverse_iterator it = m_modules.rbegin();
+		it != m_modules.rend() && ret;
+		++it)
 		ret = (*it)->CleanUp();
 
 	return ret;

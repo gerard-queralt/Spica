@@ -55,7 +55,7 @@ private:
 
 	GLuint m_depthrenderbuffer;
 	GLuint m_program;
-	Model3D* m_model3D;
+	Model3D* m_model3D = nullptr;
 	float4x4 m_model;
 	std::string m_vertexShader = "default_vertex.glsl";
 	std::string m_fragmentShader = "default_fragment.glsl";
