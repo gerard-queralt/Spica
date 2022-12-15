@@ -3,7 +3,7 @@
 #include "EditorWindow.h"
 #include "Models/Windows/SubWindows/SubWindow.h"
 
-#include <list>
+#include <vector>
 
 class WindowConfiguration : public EditorWindow
 {
@@ -15,6 +15,6 @@ protected:
 	void DrawWindowContents() override;
 
 private:
-	std::list<SubWindow*> m_collapsingSubWindows;
+	std::vector<SubWindow*> m_collapsingSubWindows;
 };
 

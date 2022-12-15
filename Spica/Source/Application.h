@@ -1,6 +1,6 @@
 #pragma once
 
-#include<list>
+#include<vector>
 #include "Globals.h"
 #include "Modules/Module.h"
 
@@ -49,7 +49,7 @@ public:
 	}
 
 private:
-	std::list<Module*> modules;
+	std::vector<Module*> m_modules;
 
 	float m_framesPerSecond = 60.f;
 

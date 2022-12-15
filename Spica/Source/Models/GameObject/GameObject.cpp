@@ -4,22 +4,22 @@
 
 void GameObject::Init()
 {
-	for (std::list<Component*>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
-		(*it)->Init();
+	for (Component* component : m_components) {
+		component->Init();
 	}
 }
 
 void GameObject::Start()
 {
-	for (std::list<Component*>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
-		(*it)->Start();
+	for (Component* component : m_components) {
+		component->Start();
 	}
 }
 
 void GameObject::Update()
 {
-	for (std::list<Component*>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
-		(*it)->Update();
+	for (Component* component : m_components) {
+		component->Update();
 	}
 }
 
@@ -39,17 +39,18 @@ void GameObject::AddComponent(ComponentType i_componentType)
 
 const Component* GameObject::GetComponent(ComponentType i_componentType) const
 {
-	for (std::list<Component*>::const_iterator it = m_components.begin(); it != m_components.end(); ++it) {
-		if ((*it)->GetType() == i_componentType)
-			return (*it);
+	for (Component* component : m_components) {
+		if (component->GetType() == i_componentType)
+			return component;
 	}
+	return nullptr;
 }
 
 void GameObject::RemoveComponent(ComponentType i_componentType)
 {
-	for (std::list<Component*>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
-		if ((*it)->GetType() == i_componentType) {
-			delete (*it);
+	for (Component* component : m_components) {
+		if (component->GetType() == i_componentType) {
+			delete component;
 			return;
 		}
 	}

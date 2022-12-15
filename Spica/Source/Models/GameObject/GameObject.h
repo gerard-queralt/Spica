@@ -1,6 +1,6 @@
 #pragma once
 
-#include <list>
+#include <vector>
 #include <string>
 
 #include "Models/Components/Component.h"
@@ -28,6 +28,6 @@ public:
 	ComponentTransform* m_transform;
 
 private:
-	std::list<Component*> m_components;
+	std::vector<Component*> m_components;
 };
 

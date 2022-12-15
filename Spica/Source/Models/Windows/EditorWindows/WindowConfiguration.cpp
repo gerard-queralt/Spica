@@ -19,13 +19,13 @@ WindowConfiguration::WindowConfiguration() : EditorWindow("Configuration")
 
 WindowConfiguration::~WindowConfiguration()
 {
-	for (Window* window : m_collapsingSubWindows)
+	for (SubWindow* window : m_collapsingSubWindows)
 		delete window;
 	m_collapsingSubWindows.clear();
 }
 
 void WindowConfiguration::DrawWindowContents()
 {
-	for (std::list<SubWindow*>::iterator it = m_collapsingSubWindows.begin(); it != m_collapsingSubWindows.end(); ++it)
-		(*it)->Draw();
+	for (SubWindow* subWindow : m_collapsingSubWindows)
+		subWindow->Draw();
 }

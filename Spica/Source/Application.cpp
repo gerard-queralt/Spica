@@ -16,32 +16,33 @@ using namespace std;
 Application::Application()
 {
 	// Order matters: they will Init/start/update in this order
-	modules.push_back(editor = new ModuleEditor());
-	modules.push_back(window = new ModuleWindow());
-	modules.push_back(renderer = new ModuleRender());
-	modules.push_back(input = new ModuleInput());
-	modules.push_back(program = new ModuleProgram());
-	modules.push_back(camera = new ModuleEditorCamera());
-	modules.push_back(debugDraw = new ModuleDebugDraw());
-	modules.push_back(texture = new ModuleTexture());
+	m_modules.push_back(editor = new ModuleEditor());
+	m_modules.push_back(window = new ModuleWindow());
+	m_modules.push_back(renderer = new ModuleRender());
+	m_modules.push_back(input = new ModuleInput());
+	m_modules.push_back(program = new ModuleProgram());
+	m_modules.push_back(camera = new ModuleEditorCamera());
+	m_modules.push_back(debugDraw = new ModuleDebugDraw());
+	m_modules.push_back(texture = new ModuleTexture());
 	
 	m_timer = new MillisecondTimer();
 }
 
 Application::~Application()
 {
-	for(list<Module*>::iterator it = modules.begin(); it != modules.end(); ++it)
+	for(Module* module : m_modules)
     {
-        delete *it;
+        delete module;
     }
+	m_modules.clear();
 }
 
 bool Application::Init()
 {
 	bool ret = true;
 
-	for(list<Module*>::iterator it = modules.begin(); it != modules.end() && ret; ++it)
-		ret = (*it)->Init();
+	for(int i = 0; i < m_modules.size() && ret; ++i)
+		ret = m_modules[i]->Init();
 
 	return ret;
 }
@@ -50,8 +51,8 @@ bool Application::Start()
 {
 	bool ret = true;
 
-	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret; ++it)
-		ret = (*it)->Start();
+	for (int i = 0; i < m_modules.size() && ret; ++i)
+		ret = m_modules[i]->Start();
 
 	m_timer->Start();
 	m_prevTime = m_timer->Read();
@@ -71,14 +72,14 @@ update_status Application::Update()
 		timePerFrame = 1000.f / m_framesPerSecond;
 
 	if (timePerFrame < m_deltaTime){
-		for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
-			ret = (*it)->PreUpdate();
+		for (int i = 0; i < m_modules.size() && ret; ++i)
+			ret = m_modules[i]->PreUpdate();
 
-		for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
-			ret = (*it)->Update();
+		for (int i = 0; i < m_modules.size() && ret; ++i)
+			ret = m_modules[i]->Update();
 
-		for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
-			ret = (*it)->PostUpdate();
+		for (int i = 0; i < m_modules.size() && ret; ++i)
+			ret = m_modules[i]->PostUpdate();
 
 		m_prevTime = currentTime;
 	}
@@ -90,7 +91,7 @@ bool Application::CleanUp()
 {
 	bool ret = true;
 
-	for(list<Module*>::reverse_iterator it = modules.rbegin(); it != modules.rend() && ret; ++it)
+	for(vector<Module*>::reverse_iterator it = m_modules.rbegin(); it != m_modules.rend() && ret; ++it)
 		ret = (*it)->CleanUp();
 
 	return ret;

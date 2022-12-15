@@ -11,7 +11,7 @@
 class WindowMainMenu : public Window
 {
 public:
-	WindowMainMenu(std::list<EditorWindow*>& i_editorWindows);
+	WindowMainMenu(const std::vector<EditorWindow*>& i_editorWindows);
 	~WindowMainMenu();
 
 	static const std::string s_repositoryLink;

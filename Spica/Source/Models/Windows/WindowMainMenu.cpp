@@ -6,13 +6,13 @@
 const std::string WindowMainMenu::s_repositoryLink = "https://github.com/gerard-queralt/Spica";
 bool WindowMainMenu::s_default = true;
 
-WindowMainMenu::WindowMainMenu(std::list<EditorWindow*>& i_editorWindows) : Window("Main Menu")
+WindowMainMenu::WindowMainMenu(const std::vector<EditorWindow*>& i_editorWindows) : Window("Main Menu")
 {
 	m_about = new WindowAbout();
 
 	m_nWindows = i_editorWindows.size();
-	for (std::list<EditorWindow*>::iterator it = i_editorWindows.begin(); it != i_editorWindows.end(); ++it) {
-		m_windowNames.push_back((*it)->GetName());
+	for (EditorWindow* window : i_editorWindows) {
+		m_windowNames.push_back(window->GetName());
 		m_windowsEnabled.push_back(true);
 	}
 }

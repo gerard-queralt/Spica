@@ -23,6 +23,7 @@ Model3D::~Model3D()
 {
 	if (!m_textures.empty())
 		glDeleteTextures(m_textures.size(), &m_textures[0]);
+	m_textures.clear();
 	for (Mesh* mesh : m_meshes)
 		delete mesh;
 	m_meshes.clear();
@@ -84,8 +85,8 @@ bool Model3D::CheckValidFormat(const std::string& i_fileName)
 
 void Model3D::Draw() const
 {
-	for (std::list<Mesh*>::const_iterator it = m_meshes.begin(); it != m_meshes.end(); ++it) {
-		(*it)->Draw();
+	for (Mesh* mesh : m_meshes) {
+		mesh->Draw();
 	}
 }
 

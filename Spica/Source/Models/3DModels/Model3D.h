@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include <list>
 
 #include "assimp/scene.h"
 #include "Geometry/AABB.h"
@@ -36,6 +35,6 @@ private:
 	AABB* m_aabb;
 
 	std::vector<GLuint> m_textures;
-	std::list<Mesh*> m_meshes;
+	std::vector<Mesh*> m_meshes;
 };
 

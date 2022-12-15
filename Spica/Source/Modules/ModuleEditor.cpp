@@ -81,12 +81,10 @@ update_status ModuleEditor::Update()
 	ImGui::End();
 
 	m_mainMenu->Draw();
-	int windowIndex = 0;
-	for (std::list<EditorWindow*>::iterator it = m_windows.begin(); it != m_windows.end(); ++it) {
-		bool windowEnabled = m_mainMenu->IsWindowEnabled(windowIndex);
-		(*it)->Draw(windowEnabled);
-		m_mainMenu->SetWindowEnabled(windowIndex, windowEnabled);
-		++windowIndex;
+	for (int i = 0; i < m_windows.size(); ++i) {
+		bool windowEnabled = m_mainMenu->IsWindowEnabled(i);
+		m_windows[i]->Draw(windowEnabled);
+		m_mainMenu->SetWindowEnabled(i, windowEnabled);
 	}
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);

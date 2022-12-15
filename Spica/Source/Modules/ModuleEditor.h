@@ -2,7 +2,7 @@
 
 #include "Module.h"
 
-#include <list>
+#include <vector>
 
 #include "Models/Windows/WindowMainMenu.h"
 #include "Models/Windows/EditorWindows/EditorWindow.h"
@@ -31,7 +31,7 @@ public:
 	}
 
 private:
-	std::list<EditorWindow*> m_windows;
+	std::vector<EditorWindow*> m_windows;
 	WindowMainMenu* m_mainMenu = nullptr;
 	WindowConsole* m_console = nullptr;
 	WindowModel3D* m_model = nullptr;
