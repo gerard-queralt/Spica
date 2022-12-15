@@ -8,9 +8,10 @@ public:
 	WindowConsole();
 	~WindowConsole();
 
-	void DrawWindowContents();
-
 	void Output(const char* i_textToPrint);
+
+protected:
+	void DrawWindowContents() override;
 
 private:
 	ImVector<const char*> m_consloneContents;

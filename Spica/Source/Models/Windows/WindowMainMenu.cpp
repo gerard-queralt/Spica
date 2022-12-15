@@ -51,14 +51,14 @@ void WindowMainMenu::DrawAbout()
 	m_about->Draw(m_showAbout);
 }
 
-void WindowMainMenu::DrawGithubLink()
+void WindowMainMenu::DrawGithubLink() const
 {
 	if (ImGui::MenuItem("GitHub Link")) {
 		ShellExecute(NULL, "open", s_repositoryLink.c_str(), NULL, NULL, SW_SHOWNORMAL);
 	}
 }
 
-void WindowMainMenu::DrawExit()
+void WindowMainMenu::DrawExit() const
 {
 	if (ImGui::MenuItem("Exit")) {
 		//to make it easier in terms of coupling between classes,

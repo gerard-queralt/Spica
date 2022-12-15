@@ -7,7 +7,7 @@ class SubWindow : public Window
 public:
 	~SubWindow();
 
-	void Draw(bool& i_enabled = s_default);
+	void Draw(bool& i_enabled = s_default) override;
 
 protected:
 	SubWindow(const std::string& i_name);

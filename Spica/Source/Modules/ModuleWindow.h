@@ -11,23 +11,30 @@ class ModuleWindow : public Module
 public:
 
 	ModuleWindow();
-
-	// Destructor
 	virtual ~ModuleWindow();
 
-	// Called before quitting
-	bool Init();
+	bool Init() override;
+	bool CleanUp() override;
 
-	// Called before quitting
-	bool CleanUp();
-
-	void ResizeWindow(int i_width, int i_height);
+	inline void ResizeWindow(int i_width, int i_height) {
+		SDL_SetWindowSize(m_window, i_width, i_height);
+	}
 	
-	bool IsWindowFullscreen();
-	bool IsWindowResizable();
-	bool IsWindowBorderless();
-	bool IsWindowDesktopFullscreen();
-	float GetWindowBrightness();
+	inline bool IsWindowFullscreen() const {
+		return IsFlagSet(SDL_WINDOW_FULLSCREEN) && m_fullscreen;
+	}
+	inline bool IsWindowResizable() const {
+		return IsFlagSet(SDL_WINDOW_RESIZABLE);
+	}
+	inline bool IsWindowBorderless() const {
+		return IsFlagSet(SDL_WINDOW_BORDERLESS);
+	}
+	inline bool IsWindowDesktopFullscreen() const {
+		return IsFlagSet(SDL_WINDOW_FULLSCREEN_DESKTOP) && !m_fullscreen;
+	}
+	inline float GetWindowBrightness() const {
+		return SDL_GetWindowBrightness(m_window);
+	}
 
 	void SetWindowToDefault();
 	void SetFullscreen(bool i_fullscreen);
@@ -45,7 +52,10 @@ public:
 
 private:
 	SDL_bool BoolToSDL_Bool(bool i_bool);
-	bool IsFlagSet(SDL_WindowFlags i_flag);
+	inline bool IsFlagSet(SDL_WindowFlags i_flag) const {
+		Uint32 windowFlags = SDL_GetWindowFlags(m_window);
+		return windowFlags & i_flag;
+	}
 
 	//whether the window was set to regular fullscreen (true) or desktop fullscreen (false)
 	//this is because both flags are set at the same time, so it's impossible to differentiate otherwise

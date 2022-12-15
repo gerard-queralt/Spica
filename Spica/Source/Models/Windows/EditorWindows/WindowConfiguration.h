@@ -11,7 +11,8 @@ public:
 	WindowConfiguration();
 	~WindowConfiguration();
 
-	void DrawWindowContents();
+protected:
+	void DrawWindowContents() override;
 
 private:
 	std::list<SubWindow*> m_collapsingSubWindows;

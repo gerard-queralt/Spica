@@ -10,7 +10,7 @@ MicrosecondTimer::~MicrosecondTimer()
 {
 }
 
-unsigned long long MicrosecondTimer::GetCurrentTime()
+unsigned long long MicrosecondTimer::GetCurrentTime() const
 {
 	return SDL_GetPerformanceCounter();
 }

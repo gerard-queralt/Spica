@@ -37,9 +37,9 @@ void GameObject::AddComponent(ComponentType i_componentType)
 	}
 }
 
-const Component* GameObject::GetComponent(ComponentType i_componentType)
+const Component* GameObject::GetComponent(ComponentType i_componentType) const
 {
-	for (std::list<Component*>::iterator it = m_components.begin(); it != m_components.end(); ++it) {
+	for (std::list<Component*>::const_iterator it = m_components.begin(); it != m_components.end(); ++it) {
 		if ((*it)->GetType() == i_componentType)
 			return (*it);
 	}

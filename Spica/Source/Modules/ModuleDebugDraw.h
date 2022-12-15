@@ -16,11 +16,11 @@ public:
     ModuleDebugDraw();
     ~ModuleDebugDraw();
 
-	bool            Init();
-	update_status   Update();
-	bool            CleanUp();
+	bool Init() override;
+	update_status Update() override;
+	bool CleanUp() override;
 
-    void            Draw(const float4x4& i_view, const float4x4& i_proj, unsigned i_width, unsigned i_height);
+    void Draw(const float4x4& i_view, const float4x4& i_proj, unsigned i_width, unsigned i_height);
 private:
 
     static DDRenderInterfaceCoreGL* s_implementation;

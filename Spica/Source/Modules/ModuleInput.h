@@ -11,9 +11,9 @@ public:
 	ModuleInput();
 	~ModuleInput();
 
-	bool Init();
-	update_status Update();
-	bool CleanUp();
+	bool Init() override;
+	update_status Update() override;
+	bool CleanUp() override;
 
 private:
 	friend class WindowInput;

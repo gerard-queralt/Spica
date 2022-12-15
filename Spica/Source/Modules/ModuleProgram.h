@@ -12,11 +12,11 @@ public:
 
 	static const std::string s_shaderFolderPath;
 
-	GLuint CreateProgramFromShaders(const std::string& i_vertexShaderName, const std::string& i_fragmentShaderName);
+	GLuint CreateProgramFromShaders(const std::string& i_vertexShaderName, const std::string& i_fragmentShaderName) const;
 
 private:
-	std::string ReadShaderFile(const std::string& i_fileName);
-	GLuint CompileShader(GLenum i_shaderType, const std::string& i_shaderSource);
-	GLuint CreateProgram(GLuint i_vertexShader, GLuint i_fragmentShader);
+	std::string ReadShaderFile(const std::string& i_fileName) const;
+	GLuint CompileShader(GLenum i_shaderType, const std::string& i_shaderSource) const;
+	GLuint CreateProgram(GLuint i_vertexShader, GLuint i_fragmentShader) const;
 };
 

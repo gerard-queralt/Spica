@@ -16,20 +16,20 @@ public:
 
 	static const std::string s_repositoryLink;
 
-	void Draw(bool& i_enabled = s_default);
+	void Draw(bool& i_enabled = s_default) override;
 
-	bool IsWindowEnabled(int i_windowIndex) {
+	inline bool IsWindowEnabled(int i_windowIndex) const {
 		return m_windowsEnabled[i_windowIndex];
 	}
-	void SetWindowEnabled(int i_windowIndex, bool i_enabled) {
+	inline void SetWindowEnabled(int i_windowIndex, bool i_enabled) {
 		m_windowsEnabled[i_windowIndex] = i_enabled;
 	}
 
 private:
 	void DrawWindowsMenu();
 	void DrawAbout();
-	void DrawGithubLink();
-	void DrawExit();
+	void DrawGithubLink() const;
+	void DrawExit() const;
 
 	static bool s_default;
 

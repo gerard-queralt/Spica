@@ -10,7 +10,8 @@ public:
 	WindowHardware();
 	~WindowHardware();
 
-	void DrawWindowContents();
+protected:
+	void DrawWindowContents() override;
 
 private:
 	void GetSoftwareVersions();
@@ -19,7 +20,7 @@ private:
 	void GetGPUinfo();
 	void UpdateAvailableMemory();
 
-	std::string FormatVersion(unsigned int i_major, unsigned int i_minor, unsigned int i_patch);
+	const std::string& FormatVersion(unsigned int i_major, unsigned int i_minor, unsigned int i_patch) const;
 
 	bool m_versionsSet = false;
 	std::string m_glewVersion;

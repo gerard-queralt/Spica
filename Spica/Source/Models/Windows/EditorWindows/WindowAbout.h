@@ -8,6 +8,7 @@ public:
 	WindowAbout();
 	~WindowAbout();
 
-	void DrawWindowContents();
+protected:
+	void DrawWindowContents() override;
 };
 

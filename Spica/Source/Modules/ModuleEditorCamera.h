@@ -9,20 +9,40 @@ public:
 	ModuleEditorCamera();
 	~ModuleEditorCamera();
 
-	bool Init();
-	update_status Update();
+	bool Init() override;
+	update_status Update() override;
 
-	float4x4 GetProjection();
-	float4x4 GetView();
-	float GetFOVrads();
-	float GetFOVdeg();
-	float GetNearPlaneDistance();
-	float GetFarPlaneDistance();
+	inline const float4x4& GetProjection() const {
+		return m_camera->GetProjection();
+	}
+	inline const float4x4& GetView() const {
+		return m_camera->GetView();
+	}
+	inline float GetFOVrads() const {
+		return m_camera->GetFOVrads();
+	}
+	inline float GetFOVdeg() const {
+		return m_camera->GetFOVdeg();
+	}
+	inline float GetNearPlaneDistance() const {
+		return m_camera->GetNearPlaneDistance();
+	}
+	inline float GetFarPlaneDistance() const {
+		return m_camera->GetFarPlaneDistance();
+	}
 
-	void SetFOVrads(float i_rads);
-	void SetFOVdeg(float i_deg);
-	void SetAspectRatio(float i_ratio);
-	void SetPlaneDistances(float i_nearPlaneDistance, float i_farPlaneDistance);
+	inline void SetFOVrads(float i_rads) {
+		m_camera->SetFOVrads(i_rads);
+	}
+	inline void SetFOVdeg(float i_deg) {
+		m_camera->SetFOVdeg(i_deg);
+	}
+	inline void SetAspectRatio(float i_ratio) {
+		m_camera->SetAspectRatio(i_ratio);
+	}
+	inline void SetPlaneDistances(float i_nearPlaneDistance, float i_farPlaneDistance) {
+		m_camera->SetPlaneDistances(i_nearPlaneDistance, i_farPlaneDistance);
+	}
 	void SetPosition(const float3& i_pos);
 	void SetPosition(float i_x, float i_y, float i_z);
 	void SetOrientation(const float3& i_ori);

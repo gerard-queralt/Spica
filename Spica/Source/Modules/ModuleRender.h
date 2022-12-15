@@ -17,29 +17,29 @@ public:
 	ModuleRender();
 	~ModuleRender();
 
-	bool Init();
-	bool Start();
-	update_status PreUpdate();
-	update_status Update();
-	update_status PostUpdate();
-	bool CleanUp();
+	bool Init() override;
+	bool Start() override;
+	update_status PreUpdate() override;
+	update_status Update() override;
+	update_status PostUpdate() override;
+	bool CleanUp() override;
 
-	void UpdateBuffers(unsigned i_width, unsigned i_height);
+	void UpdateBuffers(unsigned int i_width, unsigned int i_height);
 	void SetModel3D(const char* i_modelPath);
 	void FocusCameraOnModel();
 	void OrbitCameraAroundModel(const float2& i_thetasRad);
 	void SetShaders(const char* i_vertexShader, const char* i_fragmentShader);
 
-	float4x4 GetModel() {
+	inline const float4x4& GetModel() const {
 		return m_model;
 	}
-	GLuint GetProgram() {
+	inline GLuint GetProgram() const {
 		return m_program;
 	}
-	const char* GetVertexShader() {
+	inline const char* GetVertexShader() const {
 		return m_vertexShader;
 	}
-	const char* GetFragmentShader() {
+	inline const char* GetFragmentShader() const {
 		return m_fragmentShader;
 	}
 

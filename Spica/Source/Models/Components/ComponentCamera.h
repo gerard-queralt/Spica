@@ -10,38 +10,38 @@ public:
 	ComponentCamera(GameObject* i_gameObject);
 	~ComponentCamera();
 
-	ComponentType GetType() override {
+	inline ComponentType GetType() const override {
 		return ComponentType::Camera;
 	}
 
 	void Start() override;
 	void Update() override;
 
-	float4x4 GetProjection() {
+	inline const float4x4& GetProjection() const {
 		return m_frustum.ProjectionMatrix();
 	}
-	float4x4 GetView() {
+	inline const float4x4& GetView() const {
 		return m_frustum.ViewMatrix();
 	}
-	float3 GetFront() {
+	inline const float3& GetFront() const {
 		return m_frustum.Front();
 	}
-	float3 GetUp() {
+	inline const float3& GetUp() const {
 		return m_frustum.Up();
 	}
-	float3 GetWorldRight() {
+	inline const float3& GetWorldRight() const {
 		return m_frustum.WorldRight();
 	}
-	float GetFOVrads() {
+	float GetFOVrads() const {
 		return m_frustum.HorizontalFov();
 	}
-	float GetFOVdeg() {
+	float GetFOVdeg() const {
 		return GetFOVrads() * (180.f / math::pi);
 	}
-	float GetNearPlaneDistance() {
+	float GetNearPlaneDistance() const {
 		return m_frustum.NearPlaneDistance();
 	}
-	float GetFarPlaneDistance() {
+	float GetFarPlaneDistance() const {
 		return m_frustum.FarPlaneDistance();
 	}
 

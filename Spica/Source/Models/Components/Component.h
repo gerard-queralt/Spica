@@ -16,8 +16,8 @@ public:
 	}
 	~Component() {}
 
-	virtual ComponentType GetType() = 0;
-	GameObject* GetParent() {
+	virtual ComponentType GetType() const = 0;
+	inline GameObject* GetParent() const {
 		return m_gameObject;
 	}
 

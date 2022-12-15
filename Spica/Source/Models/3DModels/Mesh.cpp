@@ -31,7 +31,7 @@ Mesh* Mesh::LoadMesh(const aiMesh* i_mesh, const std::vector<GLuint>& i_modelTex
 	return mesh;
 }
 
-void Mesh::Draw()
+void Mesh::Draw() const
 {
 	GLuint program = App->renderer->GetProgram();
 	const float4x4& view = App->camera->GetView();

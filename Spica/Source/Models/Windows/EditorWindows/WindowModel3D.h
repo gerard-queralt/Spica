@@ -10,12 +10,15 @@ public:
 	WindowModel3D();
 	~WindowModel3D();
 
-	void DrawWindowContents();
+	inline void SetModel(const Model3D* i_model) {
+		m_model = i_model;
+	}
 
-	void SetModel(const Model3D* i_model);
+protected:
+	void DrawWindowContents() override;
 
 private:
-	std::string FormatFloat3AsString(const float3& i_point);
+	const std::string& FormatFloat3AsString(const float3& i_point) const;
 
 	const Model3D* m_model = nullptr;
 };

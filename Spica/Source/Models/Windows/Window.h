@@ -10,7 +10,7 @@ public:
 
 	virtual void Draw(bool& i_enabled) = 0;
 
-	std::string GetName() {
+	inline const std::string& GetName() const {
 		return m_name;
 	}
 	

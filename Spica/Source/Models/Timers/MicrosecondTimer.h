@@ -11,7 +11,7 @@ public:
 	~MicrosecondTimer();
 
 protected:
-	unsigned long long GetCurrentTime();
+	unsigned long long GetCurrentTime() const override;
 	void UpdateDeltaTime();
 
 private:

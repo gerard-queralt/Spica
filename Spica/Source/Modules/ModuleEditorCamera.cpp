@@ -41,56 +41,6 @@ update_status ModuleEditorCamera::Update()
 	return UPDATE_CONTINUE;
 }
 
-float4x4 ModuleEditorCamera::GetProjection()
-{
-	return m_camera->GetProjection();
-}
-
-float4x4 ModuleEditorCamera::GetView()
-{
-	return m_camera->GetView();
-}
-
-float ModuleEditorCamera::GetFOVrads()
-{
-	return m_camera->GetFOVrads();
-}
-
-float ModuleEditorCamera::GetFOVdeg()
-{
-	return m_camera->GetFOVdeg();
-}
-
-float ModuleEditorCamera::GetNearPlaneDistance()
-{
-	return m_camera->GetNearPlaneDistance();
-}
-
-float ModuleEditorCamera::GetFarPlaneDistance()
-{
-	return m_camera->GetFarPlaneDistance();
-}
-
-void ModuleEditorCamera::SetFOVrads(float i_rads)
-{
-	m_camera->SetFOVrads(i_rads);
-}
-
-void ModuleEditorCamera::SetFOVdeg(float i_deg)
-{
-	m_camera->SetFOVdeg(i_deg);
-}
-
-void ModuleEditorCamera::SetAspectRatio(float i_ratio)
-{
-	m_camera->SetAspectRatio(i_ratio);
-}
-
-void ModuleEditorCamera::SetPlaneDistances(float i_nearPlaneDistance, float i_farPlaneDistance)
-{
-	m_camera->SetPlaneDistances(i_nearPlaneDistance, i_farPlaneDistance);
-}
-
 void ModuleEditorCamera::SetPosition(const float3& i_pos)
 {
 	m_camera->GetParent()->m_transform->SetPosition(i_pos);

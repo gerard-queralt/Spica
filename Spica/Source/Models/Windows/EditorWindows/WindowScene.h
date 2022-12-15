@@ -10,7 +10,8 @@ public:
 	WindowScene();
 	~WindowScene();
 
-	void DrawWindowContents();
+protected:
+	void DrawWindowContents() override;
 
 private:
 	void ManageResize();

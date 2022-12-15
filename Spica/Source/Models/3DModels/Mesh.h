@@ -11,7 +11,7 @@ public:
 
 	static Mesh* LoadMesh(const aiMesh* i_mesh, const std::vector<GLuint>& i_modelTextures);
 
-	void Draw();
+	void Draw() const;
 
 private:
 	friend class WindowModel3D;

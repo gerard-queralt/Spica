@@ -10,7 +10,8 @@ public:
 	WindowFPS();
 	~WindowFPS();
 
-	void DrawWindowContents();
+protected:
+	void DrawWindowContents() override;
 
 private:
 	int m_fpsCaptures = 100;

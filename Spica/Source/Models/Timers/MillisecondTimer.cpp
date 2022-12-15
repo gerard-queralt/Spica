@@ -10,7 +10,7 @@ MillisecondTimer::~MillisecondTimer()
 {
 }
 
-unsigned long long MillisecondTimer::GetCurrentTime()
+unsigned long long MillisecondTimer::GetCurrentTime() const
 {
 	return SDL_GetTicks();
 }

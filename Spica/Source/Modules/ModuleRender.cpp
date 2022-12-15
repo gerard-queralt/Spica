@@ -133,7 +133,7 @@ bool ModuleRender::CleanUp()
 	return true;
 }
 
-void ModuleRender::UpdateBuffers(unsigned i_width, unsigned i_height)
+void ModuleRender::UpdateBuffers(unsigned int i_width, unsigned int i_height)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, m_framebuffer);
 	glBindTexture(GL_TEXTURE_2D, m_renderedTexture);

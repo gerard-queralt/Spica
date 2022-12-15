@@ -8,6 +8,7 @@ public:
 	WindowInput();
 	~WindowInput();
 
-	void DrawWindowContents();
+protected:
+	void DrawWindowContents() override;
 };
 

@@ -160,7 +160,7 @@ void WindowHardware::UpdateAvailableMemory()
 	m_usedRam = std::string(buf);
 }
 
-std::string WindowHardware::FormatVersion(unsigned int i_major, unsigned int i_minor, unsigned int i_patch)
+const std::string& WindowHardware::FormatVersion(unsigned int i_major, unsigned int i_minor, unsigned int i_patch) const
 {
 	return std::to_string(i_major) + "." + std::to_string(i_minor) + "." + std::to_string(i_patch);;
 }

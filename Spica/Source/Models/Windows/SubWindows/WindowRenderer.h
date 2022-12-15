@@ -10,7 +10,8 @@ public:
 	WindowRenderer();
 	~WindowRenderer();
 
-	void DrawWindowContents();
+protected:
+	void DrawWindowContents() override;
 
 private:
 	static int s_bufferSize;

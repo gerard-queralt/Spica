@@ -14,7 +14,8 @@ ModuleProgram::~ModuleProgram()
 {
 }
 
-GLuint ModuleProgram::CreateProgramFromShaders(const std::string& i_vertexShaderName, const std::string& i_fragmentShaderName)
+GLuint ModuleProgram::CreateProgramFromShaders(const std::string& i_vertexShaderName,
+											   const std::string& i_fragmentShaderName) const
 {
 	std::string vertexShaderCode = ReadShaderFile(i_vertexShaderName);
 	std::string fragmentShaderCode = ReadShaderFile(i_fragmentShaderName);
@@ -27,7 +28,7 @@ GLuint ModuleProgram::CreateProgramFromShaders(const std::string& i_vertexShader
 	return program;
 }
 
-std::string ModuleProgram::ReadShaderFile(const std::string& i_fileName)
+std::string ModuleProgram::ReadShaderFile(const std::string& i_fileName) const
 {
 	std::ifstream file;
 	std::string fileContents = "";
@@ -45,7 +46,7 @@ std::string ModuleProgram::ReadShaderFile(const std::string& i_fileName)
 	return fileContents;
 }
 
-GLuint ModuleProgram::CompileShader(GLenum i_shaderType, const std::string& i_shaderSource)
+GLuint ModuleProgram::CompileShader(GLenum i_shaderType, const std::string& i_shaderSource) const
 {
 	GLuint shaderID = glCreateShader(i_shaderType);
 	const char* sourceAsChars = i_shaderSource.c_str();
@@ -68,7 +69,7 @@ GLuint ModuleProgram::CompileShader(GLenum i_shaderType, const std::string& i_sh
 	return shaderID;
 }
 
-GLuint ModuleProgram::CreateProgram(GLuint i_vertexShader, GLuint i_fragmentShader)
+GLuint ModuleProgram::CreateProgram(GLuint i_vertexShader, GLuint i_fragmentShader) const
 {
 	GLuint programID = glCreateProgram();
 	glAttachShader(programID, i_vertexShader);

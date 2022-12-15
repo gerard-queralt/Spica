@@ -8,7 +8,7 @@ public:
 	unsigned long long Stop();
 
 protected:
-	virtual unsigned long long GetCurrentTime() = 0;
+	virtual unsigned long long GetCurrentTime() const = 0;
 	virtual void UpdateDeltaTime() = 0;
 
 	unsigned long long m_startTime = 0L;

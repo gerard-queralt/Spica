@@ -13,7 +13,8 @@ ModuleTexture::~ModuleTexture()
 {
 }
 
-GLuint ModuleTexture::LoadTextureFromFile(std::string i_texturePathInModel, std::string i_modelPath)
+GLuint ModuleTexture::LoadTextureFromFile(std::string i_texturePathInModel,
+                                          std::string i_modelPath) const
 {
     DirectX::ScratchImage image;
     HRESULT loadingImageResult = LoadImageFromFile(i_texturePathInModel, i_modelPath, image);
@@ -40,7 +41,7 @@ GLuint ModuleTexture::LoadTextureFromFile(std::string i_texturePathInModel, std:
 
 HRESULT ModuleTexture::LoadImageFromFile(const std::string& i_texturePathInModel,
                                          const std::string& i_modelPath,
-                                         DirectX::ScratchImage& o_image)
+                                         DirectX::ScratchImage& o_image) const
 {
     std::string texturePath = i_texturePathInModel;
     std::string textureName = GetImageNameFromPath(i_texturePathInModel);
@@ -77,7 +78,7 @@ HRESULT ModuleTexture::LoadImageFromFile(const std::string& i_texturePathInModel
     return res;
 }
 
-std::string ModuleTexture::GetImageNameFromPath(const std::string& i_texturePathInModel)
+const std::string& ModuleTexture::GetImageNameFromPath(const std::string& i_texturePathInModel) const
 {
     std::string imageName;
     bool fileSeparatorNotFound = true;
@@ -90,7 +91,8 @@ std::string ModuleTexture::GetImageNameFromPath(const std::string& i_texturePath
     return imageName;
 }
 
-HRESULT ModuleTexture::TryLoadingImage(std::string i_texturePath, DirectX::ScratchImage& o_image)
+HRESULT ModuleTexture::TryLoadingImage(std::string i_texturePath,
+                                       DirectX::ScratchImage& o_image) const
 {
     std::wstring texturePathAsWString = std::wstring(i_texturePath.begin(), i_texturePath.end());
     HRESULT res;
@@ -111,7 +113,7 @@ void ModuleTexture::LoadInformationFromImage(const DirectX::ScratchImage& i_imag
                                              GLint& o_height,
                                              GLint& o_internalFormat,
                                              GLint& o_format,
-                                             GLint& o_type)
+                                             GLint& o_type) const
 {
     DirectX::TexMetadata metadata = i_image.GetMetadata();
     o_width = metadata.width;
@@ -140,7 +142,8 @@ void ModuleTexture::LoadInformationFromImage(const DirectX::ScratchImage& i_imag
     }
 }
 
-HRESULT ModuleTexture::RotateImage(const DirectX::ScratchImage& i_imageSource, DirectX::ScratchImage& o_rotatedImage)
+HRESULT ModuleTexture::RotateImage(const DirectX::ScratchImage& i_imageSource,
+                                   DirectX::ScratchImage& o_rotatedImage) const
 {
     HRESULT result =
         DirectX::FlipRotate(i_imageSource.GetImages(), 1, i_imageSource.GetMetadata(), DirectX::TEX_FR_FLIP_VERTICAL, o_rotatedImage);

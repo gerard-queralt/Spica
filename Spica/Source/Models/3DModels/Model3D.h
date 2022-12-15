@@ -18,7 +18,7 @@ public:
 	static Model3D* LoadFromFile(const std::string& i_fileName);
 	void Draw();
 
-	const AABB* GetAABB() {
+	inline const AABB* GetAABB() const {
 		return m_aabb;
 	}
 

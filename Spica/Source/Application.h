@@ -36,15 +36,15 @@ public:
 	ModuleDebugDraw* debugDraw = nullptr;
 	ModuleTexture* texture = nullptr;
 
-	int GetDeltaTime() {
+	inline int GetDeltaTime() const {
 		return m_deltaTime;
 	}
 
-	float GetFPS() {
+	inline float GetFPS() const {
 		return m_framesPerSecond;
 	}
 
-	void SetFPS(float i_framesPerSecond) {
+	inline void SetFPS(float i_framesPerSecond) {
 		m_framesPerSecond = i_framesPerSecond;
 	}
 

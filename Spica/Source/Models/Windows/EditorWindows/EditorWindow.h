@@ -9,9 +9,9 @@ class EditorWindow : public Window
 public:
 	~EditorWindow();
 
-	void Draw(bool& io_enabled);
+	void Draw(bool& io_enabled) override;
 
-	bool IsFocused() {
+	inline bool IsFocused() const {
 		return m_focused;
 	}
 

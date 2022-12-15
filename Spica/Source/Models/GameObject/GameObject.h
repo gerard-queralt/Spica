@@ -20,7 +20,7 @@ public:
 	void Update();
 
 	void AddComponent(ComponentType i_componentType);
-	const Component* GetComponent(ComponentType i_componentType);
+	const Component* GetComponent(ComponentType i_componentType) const;
 	void RemoveComponent(ComponentType i_componentType);
 
 	const char* m_name;

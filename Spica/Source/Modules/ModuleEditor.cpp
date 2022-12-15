@@ -130,8 +130,3 @@ void ModuleEditor::SetTargetModel(const Model3D* i_model)
 {
 	m_model->SetModel(i_model);
 }
-
-bool ModuleEditor::IsSceneFocused()
-{
-	return m_scene->IsFocused();
-}

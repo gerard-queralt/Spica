@@ -11,17 +11,17 @@ public:
 	ComponentTransform(GameObject* i_gameObject);
 	~ComponentTransform();
 
-	ComponentType GetType() override {
+	inline ComponentType GetType() const override {
 		return ComponentType::Transform;
 	}
 
-	float3 GetPosition() {
+	inline const float3& GetPosition() const {
 		return m_position;
 	}
-	Quat GetRotation() {
+	inline const Quat& GetRotation() const {
 		return m_rotation;
 	}
-	float3 GetScale() {
+	inline const float3& GetScale() const {
 		return m_scale;
 	}
 
@@ -49,9 +49,9 @@ public:
 	void Scale(float i_scaleX, float i_scaleY, float i_scaleZ);
 
 private:
-	float4x4 ComputeTranslationMatrix(const float3& i_deltaCoords);
-	float4x4 ComputeRotationMatrix(const float3& i_thetasRad);
-	float4x4 ComputeScaleMatrix(const float3& i_deltaScale);
+	const float4x4& ComputeTranslationMatrix(const float3& i_deltaCoords) const;
+	const float4x4& ComputeRotationMatrix(const float3& i_thetasRad) const;
+	const float4x4& ComputeScaleMatrix(const float3& i_deltaScale) const;
 	
 	float3 m_position = float3::zero;
 	Quat m_rotation = Quat::identity;

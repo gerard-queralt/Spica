@@ -8,6 +8,7 @@ public:
 	WindowCamera();
 	~WindowCamera();
 
-	void DrawWindowContents();
+protected:
+	void DrawWindowContents() override;
 };
 
