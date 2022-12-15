@@ -4,11 +4,8 @@
 #include "Math/float3x4.h"
 #include "Math/float4x4.h"
 
-ComponentTransform::ComponentTransform(const GameObject* i_gameObject) : Component(i_gameObject)
+ComponentTransform::ComponentTransform(GameObject* i_gameObject) : Component(i_gameObject)
 {
-	m_position = float3::zero;
-	m_rotation = Quat(float3x3::identity);
-	m_scale = float3::one;
 }
 
 ComponentTransform::~ComponentTransform()

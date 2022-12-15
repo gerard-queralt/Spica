@@ -2,7 +2,8 @@
 
 enum class ComponentType
 {
-	Transform
+	Transform,
+	Camera
 };
 
 class GameObject;
@@ -10,16 +11,20 @@ class GameObject;
 class Component
 {
 public:
-	Component(const GameObject* i_gameObject) {
+	Component(GameObject* i_gameObject) {
 		m_gameObject = i_gameObject;
 	}
 	~Component() {}
 
 	virtual ComponentType GetType() = 0;
-	const GameObject* GetParent() {
+	GameObject* GetParent() {
 		return m_gameObject;
 	}
 
+	virtual void Init() {}
+	virtual void Start() {}
+	virtual void Update() {}
+
 private:
-	const GameObject* m_gameObject;
+	GameObject* m_gameObject;
 };

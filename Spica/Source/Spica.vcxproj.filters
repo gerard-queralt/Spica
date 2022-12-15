@@ -241,6 +241,9 @@
     <ClCompile Include="Models\Components\ComponentTransform.cpp">
       <Filter>Source\Models\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Models\Components\ComponentCamera.cpp">
+      <Filter>Source\Models\Components</Filter>
+    </ClCompile>
     <ClCompile Include="Models\GameObject\GameObject.cpp">
       <Filter>Source\Models\GameObject</Filter>
     </ClCompile>
@@ -608,6 +611,9 @@
     </ClInclude>
     <ClInclude Include="Models\GameObject\GameObject.h">
       <Filter>Source\Models\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Components\ComponentCamera.h">
+      <Filter>Source\Models\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

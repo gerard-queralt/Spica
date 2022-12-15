@@ -114,7 +114,7 @@ update_status ModuleInput::Update()
 
         if (mouseMotion) {
             //rotate camera
-            float3 deltaRot = float3::zero;
+            float2 deltaRot = float2::zero;
             float deltaAngle = m_angleSpeed * deltaTime;
             deltaRot.x = -deltaAngle * sdlEvent.motion.xrel;
             deltaRot.y = -deltaAngle * sdlEvent.motion.yrel;

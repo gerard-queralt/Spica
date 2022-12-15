@@ -15,6 +15,10 @@ public:
 	}
 	~GameObject() {}
 
+	void Init();
+	void Start();
+	void Update();
+
 	void AddComponent(ComponentType i_componentType);
 	const Component* GetComponent(ComponentType i_componentType);
 	void RemoveComponent(ComponentType i_componentType);

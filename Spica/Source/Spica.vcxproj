@@ -201,6 +201,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Models\3DModels\Mesh.cpp" />
     <ClCompile Include="Models\3DModels\Model3D.cpp" />
+    <ClCompile Include="Models\Components\ComponentCamera.cpp" />
     <ClCompile Include="Models\Components\ComponentTransform.cpp" />
     <ClCompile Include="Models\GameObject\GameObject.cpp" />
     <ClCompile Include="Models\Timers\MicrosecondTimer.cpp" />
@@ -321,6 +322,7 @@
     <ClInclude Include="Models\3DModels\Mesh.h" />
     <ClInclude Include="Models\3DModels\Model3D.h" />
     <ClInclude Include="Models\Components\Component.h" />
+    <ClInclude Include="Models\Components\ComponentCamera.h" />
     <ClInclude Include="Models\Components\ComponentTransform.h" />
     <ClInclude Include="Models\GameObject\GameObject.h" />
     <ClInclude Include="Models\Timers\MicrosecondTimer.h" />

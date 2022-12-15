@@ -8,7 +8,7 @@
 class ComponentTransform : public Component
 {
 public:
-	ComponentTransform(const GameObject* i_gameObject);
+	ComponentTransform(GameObject* i_gameObject);
 	~ComponentTransform();
 
 	ComponentType GetType() override {
@@ -53,8 +53,8 @@ private:
 	float4x4 ComputeRotationMatrix(const float3& i_thetasRad);
 	float4x4 ComputeScaleMatrix(const float3& i_deltaScale);
 	
-	float3 m_position;
-	Quat m_rotation;
-	float3 m_scale;
+	float3 m_position = float3::zero;
+	Quat m_rotation = Quat::identity;
+	float3 m_scale = float3::one;
 };
 
