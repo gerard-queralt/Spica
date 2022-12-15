@@ -18,7 +18,7 @@ protected:
 	void DrawWindowContents() override;
 
 private:
-	const std::string& FormatFloat3AsString(const float3& i_point) const;
+	std::string FormatFloat3AsString(const float3& i_point) const;
 
 	const Model3D* m_model = nullptr;
 };

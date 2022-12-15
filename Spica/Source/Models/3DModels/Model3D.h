@@ -16,7 +16,7 @@ public:
 	static const std::string s_modelFolderPath;
 
 	static Model3D* LoadFromFile(const std::string& i_fileName);
-	void Draw();
+	void Draw() const;
 
 	inline const AABB* GetAABB() const {
 		return m_aabb;

@@ -614,7 +614,9 @@ update_status  ModuleDebugDraw::Update()
 {
     int w, h;
     SDL_GetWindowSize(App->window->m_window, &w, &h);
-    Draw(App->camera->GetView(), App->camera->GetProjection(), w, h);
+    float4x4 view = App->camera->GetView();
+    float4x4 proj = App->camera->GetProjection();
+    Draw(view, proj, w, h);
 	return UPDATE_CONTINUE;
 }
 

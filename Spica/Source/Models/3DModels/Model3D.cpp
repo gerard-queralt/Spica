@@ -83,9 +83,9 @@ bool Model3D::CheckValidFormat(const std::string& i_fileName)
 	return fileFormat == ".fbx";
 }
 
-void Model3D::Draw()
+void Model3D::Draw() const
 {
-	for (std::list<Mesh*>::iterator it = m_meshes.begin(); it != m_meshes.end(); ++it) {
+	for (std::list<Mesh*>::const_iterator it = m_meshes.begin(); it != m_meshes.end(); ++it) {
 		(*it)->Draw();
 	}
 }

@@ -45,7 +45,7 @@ void WindowModel3D::DrawWindowContents()
 	}
 }
 
-const std::string& WindowModel3D::FormatFloat3AsString(const float3& i_point) const
+std::string WindowModel3D::FormatFloat3AsString(const float3& i_point) const
 {
 	return std::to_string(i_point.x) + ", " + std::to_string(i_point.y) + ", " + std::to_string(i_point.z);
 }

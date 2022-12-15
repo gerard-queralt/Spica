@@ -20,7 +20,7 @@ private:
 	void GetGPUinfo();
 	void UpdateAvailableMemory();
 
-	const std::string& FormatVersion(unsigned int i_major, unsigned int i_minor, unsigned int i_patch) const;
+	std::string FormatVersion(unsigned int i_major, unsigned int i_minor, unsigned int i_patch) const;
 
 	bool m_versionsSet = false;
 	std::string m_glewVersion;

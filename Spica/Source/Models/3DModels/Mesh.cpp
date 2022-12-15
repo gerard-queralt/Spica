@@ -34,8 +34,8 @@ Mesh* Mesh::LoadMesh(const aiMesh* i_mesh, const std::vector<GLuint>& i_modelTex
 void Mesh::Draw() const
 {
 	GLuint program = App->renderer->GetProgram();
-	const float4x4& view = App->camera->GetView();
-	const float4x4& proj = App->camera->GetProjection();
+	float4x4 view = App->camera->GetView();
+	float4x4 proj = App->camera->GetProjection();
 	float4x4 model = float4x4::identity;
 	
 	glUseProgram(program);

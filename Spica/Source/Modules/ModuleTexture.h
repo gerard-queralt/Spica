@@ -20,7 +20,7 @@ private:
 	HRESULT LoadImageFromFile(const std::string& i_texturePathInModel,
 							  const std::string& i_modelPath,
 							  DirectX::ScratchImage& o_image) const;
-	const std::string& GetImageNameFromPath(const std::string& i_texturePathInModel) const;
+	std::string GetImageNameFromPath(const std::string& i_texturePathInModel) const;
 	HRESULT TryLoadingImage(std::string i_texturePath, DirectX::ScratchImage& o_image) const;
 	HRESULT RotateImage(const DirectX::ScratchImage& i_imageSource, DirectX::ScratchImage& o_rotatedImage) const;
 	void LoadInformationFromImage(const DirectX::ScratchImage& i_image,

@@ -78,7 +78,7 @@ HRESULT ModuleTexture::LoadImageFromFile(const std::string& i_texturePathInModel
     return res;
 }
 
-const std::string& ModuleTexture::GetImageNameFromPath(const std::string& i_texturePathInModel) const
+std::string ModuleTexture::GetImageNameFromPath(const std::string& i_texturePathInModel) const
 {
     std::string imageName;
     bool fileSeparatorNotFound = true;
