@@ -75,7 +75,6 @@ void ComponentCamera::Orbit(const float3& i_pointToOrbit, const float2& i_thetas
 	}
 
 	GetParent()->m_transform->SetRotation(rotationMat);
-	UpdateRotationWithTransform();
 
 	float3 oldFront = m_frustum.Front().Normalized();
 	float distanceToPoint = i_pointToOrbit.Distance(m_frustum.Pos());
@@ -92,18 +91,16 @@ void ComponentCamera::Zoom(float i_deltaZoom, bool i_increaseZoom)
 	this->GetParent()->m_transform->Translate(float3(i_deltaZoom, 0.f, 0.f));
 }
 
-void ComponentCamera::UpdateRotationWithTransform()
+void ComponentCamera::UpdateFrustrumWithTransform()
 {
 	ComponentTransform* parentTransform = this->GetParent()->m_transform;
+	m_frustum.SetPos(parentTransform->GetPosition());
+
 	float3x3 rotationMatrix = float3x3::FromQuat(parentTransform->GetRotation());
 	float3 oldFront = m_frustum.Front().Normalized();
 	float3 oldUp = m_frustum.Up().Normalized();
 	m_frustum.SetFront(rotationMatrix.MulDir(oldFront));
 	m_frustum.SetUp(rotationMatrix.MulDir(oldUp));
-}
-
-void ComponentCamera::UpdateFrustrumWithTransform()
-{
-	ComponentTransform* parentTransform = this->GetParent()->m_transform;
-	m_frustum.SetPos(parentTransform->GetPosition());
+	//reset rotation so it doesn't apply each frame
+	parentTransform->SetRotation(float3x3::identity);
 }
