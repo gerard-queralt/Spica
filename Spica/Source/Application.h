@@ -61,4 +61,4 @@ private:
 	int m_deltaTime = 0;
 };
 
-extern Application* App;
+extern std::unique_ptr<Application> App;

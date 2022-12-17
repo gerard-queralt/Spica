@@ -16,7 +16,7 @@ enum main_states
 	MAIN_EXIT
 };
 
-Application* App = NULL;
+std::unique_ptr<Application> App = nullptr;
 
 int main(int argc, char ** argv)
 {
@@ -30,7 +30,7 @@ int main(int argc, char ** argv)
 		case MAIN_CREATION:
 
 			LOG_ENGINE("Application Creation --------------");
-			App = new Application();
+			App = std::make_unique<Application>();
 			state = MAIN_INIT;
 			break;
 
@@ -99,7 +99,6 @@ int main(int argc, char ** argv)
 
 	}
 
-	delete App;
 	LOG_ENGINE("Bye :)\n");
 	return main_return;
 }
