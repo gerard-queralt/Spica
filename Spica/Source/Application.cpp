@@ -68,13 +68,13 @@ update_status Application::Update()
 		timePerFrame = 1000.f / m_framesPerSecond;
 
 	if (timePerFrame < m_deltaTime){
-		for (int i = 0; i < m_modules.size() && ret; ++i)
+		for (int i = 0; i < m_modules.size() && ret == UPDATE_CONTINUE; ++i)
 			ret = m_modules[i]->PreUpdate();
 
-		for (int i = 0; i < m_modules.size() && ret; ++i)
+		for (int i = 0; i < m_modules.size() && ret == UPDATE_CONTINUE; ++i)
 			ret = m_modules[i]->Update();
 
-		for (int i = 0; i < m_modules.size() && ret; ++i)
+		for (int i = 0; i < m_modules.size() && ret == UPDATE_CONTINUE; ++i)
 			ret = m_modules[i]->PostUpdate();
 
 		m_prevTime = currentTime;
